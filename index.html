@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pranav Divichenchu</title>
+  <meta name="description" content="Pranav Divichenchu — CS student at Georgia Tech building AI infrastructure, ML systems, and products people use." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Motion chrome -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#top" class="nav__brand magnetic" data-cursor>PD</a>
+    <nav class="nav__links">
+      <a href="#about" data-cursor>About</a>
+      <a href="#experience" data-cursor>Experience</a>
+      <a href="#projects" data-cursor>Projects</a>
+      <a href="#awards" data-cursor>Awards</a>
+      <a href="#contact" data-cursor>Contact</a>
+    </nav>
+    <a href="Pranav_Divichenchu_Resume.pdf" class="nav__resume magnetic" data-cursor target="_blank" rel="noopener">Resume ↗</a>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="hero__status" data-reveal><span class="dot"></span> Open to Summer 2027 internships</p>
+      <p class="hero__eyebrow" data-reveal data-reveal-delay="80">Ashburn, VA · Georgia Tech</p>
+      <h1 class="hero__name" data-splitlines>Pranav Divichenchu</h1>
+      <p class="hero__tagline" data-reveal data-reveal-delay="200">
+        CS student building <em>AI infrastructure</em>, machine-learning systems,
+        and products that reach real people.
+      </p>
+      <div class="hero__actions" data-reveal data-reveal-delay="320">
+        <a class="btn btn--primary magnetic" data-cursor href="#projects">See my work</a>
+        <a class="btn btn--ghost magnetic" data-cursor href="#contact">Get in touch</a>
+      </div>
+      <ul class="hero__links" data-reveal data-reveal-delay="420">
+        <!-- Swap the href="#" values below for your real profiles -->
+        <li><a href="mailto:pranavdivichenchu@gmail.com" data-cursor>Email</a></li>
+        <li><a href="https://github.com/PranavDivichenchu" data-link="github" data-cursor target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#" data-link="linkedin" data-cursor target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <div class="hero__scroll" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>AI Infrastructure</span><span>·</span><span>Machine Learning</span><span>·</span><span>Quantitative Research</span><span>·</span><span>Product</span><span>·</span><span>Go &amp; Rust</span><span>·</span><span>Full-Stack</span><span>·</span>
+        <span>AI Infrastructure</span><span>·</span><span>Machine Learning</span><span>·</span><span>Quantitative Research</span><span>·</span><span>Product</span><span>·</span><span>Go &amp; Rust</span><span>·</span><span>Full-Stack</span><span>·</span>
+      </div>
+    </div>
+
+    <!-- ============ STAT STRIP ============ -->
+    <section class="stats">
+      <div class="stat" data-reveal><span class="stat__num" data-count="13" data-suffix="M+">0</span><span class="stat__label">financial articles modeled</span></div>
+      <div class="stat" data-reveal data-reveal-delay="100"><span class="stat__num" data-count="700" data-suffix="K+">0</span><span class="stat__label">views on Karana</span></div>
+      <div class="stat" data-reveal data-reveal-delay="200"><span class="stat__num" data-count="400" data-suffix="+">0</span><span class="stat__label">students taught to code</span></div>
+      <div class="stat" data-reveal data-reveal-delay="300"><span class="stat__num" data-count="1000" data-suffix="+">0</span><span class="stat__label">securities analyzed</span></div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section">
+      <h2 class="section__title" data-reveal><span class="section__index">01</span> About</h2>
+      <div class="about">
+        <p data-reveal>
+          I'm a Computer Science student at the <strong>Georgia Institute of Technology</strong>
+          (BS, expected Dec 2028), and the salutatorian of Independence High School with a 4.73 weighted GPA.
+        </p>
+        <p data-reveal data-reveal-delay="120">
+          My work sits where <strong>AI infrastructure</strong> meets things people actually use — from
+          decentralized agent-to-agent systems and ML policy-intelligence platforms to quantitative
+          finance research and mobile products with hundreds of thousands of views. I've published
+          research, led engineering teams, and taught hundreds of students to code.
+        </p>
+        <p data-reveal data-reveal-delay="240">
+          I like building from scratch, shipping fast, and measuring the impact.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="section">
+      <h2 class="section__title" data-reveal><span class="section__index">02</span> Experience</h2>
+      <ol class="timeline">
+        <li class="entry" data-reveal>
+          <div class="entry__meta">
+            <span class="entry__date">2026</span>
+            <span class="entry__place">Remote</span>
+          </div>
+          <div class="entry__body">
+            <h3>AI Intern, Infrastructure <span class="entry__org">· Cloud9</span></h3>
+            <ul>
+              <li>Built a buyer–vendor matching platform from scratch on Google Cloud Platform, architecting the backend services that connect buyers with vendors.</li>
+              <li>Designed a pipeline that scores vendor offerings against buyer intent to surface the most relevant matches at scale.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry" data-reveal>
+          <div class="entry__meta">
+            <span class="entry__date">2026</span>
+            <span class="entry__place">Remote</span>
+          </div>
+          <div class="entry__body">
+            <h3>Machine Learning Intern <span class="entry__org">· Politheon</span></h3>
+            <ul>
+              <li>Developed ML models for an AI policy-intelligence platform, engineering features that measurably improved predictive accuracy.</li>
+              <li>Cleaned large-scale datasets and integrated new data sources into the production prediction pipeline.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry" data-reveal>
+          <div class="entry__meta">
+            <span class="entry__date">2024 – 2025</span>
+            <span class="entry__place">Columbia, MO</span>
+          </div>
+          <div class="entry__body">
+            <h3>Research Intern <span class="entry__org">· University of Missouri, Trulaske College of Business</span></h3>
+            <ul>
+              <li>Built a sentiment-analysis model over 13M+ financial articles to generate quantitative trading signals.</li>
+              <li>Co-authored a paper (submitted to the <em>Journal of Finance</em>) proposing a quantitative hedge-fund strategy; advised by Prof. Kuntara Pukthuanthong.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry" data-reveal>
+          <div class="entry__meta">
+            <span class="entry__date">Summer 2024</span>
+            <span class="entry__place">Fairfax, VA</span>
+          </div>
+          <div class="entry__body">
+            <h3>Summer Research Intern <span class="entry__org">· George Mason University — ASSIP (~10% acceptance)</span></h3>
+            <ul>
+              <li>Modeled cross-market correlations and spillover effects across 1,000+ securities in Python and R.</li>
+              <li>Published findings and presented at four symposia within an 8-student lab on financial-market dynamics.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry" data-reveal>
+          <div class="entry__meta">
+            <span class="entry__date">2023</span>
+            <span class="entry__place">Remote</span>
+          </div>
+          <div class="entry__body">
+            <h3>Lead Software Engineering Intern <span class="entry__org">· SNS Solutions LLC</span></h3>
+            <ul>
+              <li>Led 10 interns building an ML-powered resume-screening system (C#, UiPath, SQL); deployed company-wide across 500+ applications.</li>
+              <li>Cut manual review time 70% and helped secure a Department of Defense partnership.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section">
+      <h2 class="section__title" data-reveal><span class="section__index">03</span> Projects</h2>
+      <div class="projects">
+        <article class="card" data-tilt data-reveal>
+          <div class="card__head">
+            <h3>B2Alpha</h3>
+            <span class="card__date">2026</span>
+          </div>
+          <p class="card__sub">Decentralized AI-agent infrastructure</p>
+          <p>Scalable infrastructure for secure agent-to-agent communication and autonomous transactions — cryptographic identity (DIDs, Ed25519), autonomous payments via Stripe Connect, and a real-time telecom bridge for agent-to-phone call translation.</p>
+          <ul class="tags">
+            <li>Go</li><li>Rust</li><li>gRPC</li><li>PostgreSQL</li><li>WebSocket</li><li>Twilio</li>
+          </ul>
+        </article>
+
+        <article class="card" data-tilt data-reveal data-reveal-delay="80">
+          <div class="card__head">
+            <h3>Karana</h3>
+            <span class="card__date">2026 – Present</span>
+          </div>
+          <p class="card__sub">Spiritual learning &amp; recitation app</p>
+          <p>A mobile-first app teaching Hindu prayers, festivals, and verses — grew to 700K+ views and 5K+ waitlist signups. Guided audio recitations, a personalized learning path, and Google/email auth across a four-section app.</p>
+          <ul class="tags">
+            <li>React</li><li>Supabase</li><li>Vercel</li>
+          </ul>
+        </article>
+
+        <article class="card" data-tilt data-reveal data-reveal-delay="160">
+          <div class="card__head">
+            <h3>Khali</h3>
+            <span class="card__date">2026 – Present</span>
+          </div>
+          <p class="card__sub">News discovery platform</p>
+          <p>Reimagining news as short-form, engaging content — "TikTok for news." Building a personalized recommendation algorithm that surfaces relevant stories based on user interests; leading product, UI/UX, and backend.</p>
+          <ul class="tags">
+            <li>React Native</li><li>Node.js</li>
+          </ul>
+        </article>
+
+        <article class="card" data-tilt data-reveal>
+          <div class="card__head">
+            <h3>Mini Makers</h3>
+            <span class="card__date">2024 – 2025</span>
+          </div>
+          <p class="card__sub">Coding-education nonprofit</p>
+          <p>Generated $8,000 teaching 400+ students across 8+ languages; official partner of DoSomething.org (501(c)(3)) for CS-education access, and partnered with the Sudeekshan Foundation to help fund 600+ medical surgeries.</p>
+          <ul class="tags">
+            <li>Python</li><li>Java</li><li>C++</li><li>JavaScript</li>
+          </ul>
+        </article>
+
+        <article class="card" data-tilt data-reveal data-reveal-delay="80">
+          <div class="card__head">
+            <h3>Cognicade Studios</h3>
+            <span class="card__date">2023 – 2025</span>
+          </div>
+          <p class="card__sub">Educational games</p>
+          <p>Published 5 educational games with 10,000+ plays reaching 90+ students; won $2,500+ in prizes. Partnered with the Loudoun Education Foundation and county administration; presented at 10 schools.</p>
+          <ul class="tags">
+            <li>Unity</li><li>C#</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="section">
+      <h2 class="section__title" data-reveal><span class="section__index">04</span> Skills</h2>
+      <div class="skills">
+        <div class="skills__group" data-reveal>
+          <h4>Languages</h4>
+          <p>Python · Java · C++ · C# · JavaScript · SQL · R · Go · Rust · HTML/CSS</p>
+        </div>
+        <div class="skills__group" data-reveal data-reveal-delay="80">
+          <h4>Frameworks &amp; Libraries</h4>
+          <p>React · React Native · Node.js · TensorFlow · PyTorch · scikit-learn · Pandas · NumPy</p>
+        </div>
+        <div class="skills__group" data-reveal data-reveal-delay="160">
+          <h4>Tools &amp; Platforms</h4>
+          <p>Git · Google Cloud Platform · PostgreSQL · gRPC · WebSocket · Supabase · Stripe · Twilio · UiPath</p>
+        </div>
+        <div class="skills__group" data-reveal data-reveal-delay="240">
+          <h4>Spoken Languages</h4>
+          <p>English (Native) · Spanish (Seal of Biliteracy) · Telugu (Conversational)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AWARDS ============ -->
+    <section id="awards" class="section">
+      <h2 class="section__title" data-reveal><span class="section__index">05</span> Awards &amp; Recognition</h2>
+      <ul class="awards">
+        <li data-reveal><span class="awards__tag">Hackathon</span> Best Overall — Rock Ridge 2024, Academies of Loudoun 2023</li>
+        <li data-reveal data-reveal-delay="60"><span class="awards__tag">Hackathon</span> Best Game — Academies of Loudoun 2024</li>
+        <li data-reveal data-reveal-delay="120"><span class="awards__tag">Competition</span> FBLA Coding &amp; Software Development — 2nd State / 10th Nationals</li>
+        <li data-reveal data-reveal-delay="180"><span class="awards__tag">Competition</span> Science Olympiad Scrambler — 1st State</li>
+        <li data-reveal data-reveal-delay="240"><span class="awards__tag">Academic</span> Salutatorian, Independence HS — 4.73 weighted GPA</li>
+        <li data-reveal data-reveal-delay="300"><span class="awards__tag">Language</span> Seal of Biliteracy (Spanish)</li>
+      </ul>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section section--contact">
+      <h2 class="section__title" data-reveal><span class="section__index">06</span> Get in touch</h2>
+      <p class="contact__lead" data-reveal data-reveal-delay="80">
+        I'm open to internships, research, and collaborations. The fastest way to reach me is email.
+      </p>
+      <div class="contact__links" data-reveal data-reveal-delay="160">
+        <a class="btn btn--primary magnetic" data-cursor href="mailto:pranavdivichenchu@gmail.com">pranavdivichenchu@gmail.com</a>
+        <a class="btn btn--ghost magnetic" data-cursor href="https://github.com/PranavDivichenchu" data-link="github" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn--ghost magnetic" data-cursor href="#" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Pranav Divichenchu</span>
+    <span>Ashburn, VA · Built from scratch</span>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
