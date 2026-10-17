@@ -1,23 +1,23 @@
 # pranavdivichenchu.github.io
 
-Personal website for Pranav Divichenchu — CS student at Georgia Tech.
+Personal website for Pranav Divichenchu. Live at https://pranavdivichenchu.github.io
 
-Live: https://pranavdivichenchu.github.io
+Plain HTML, CSS, and JavaScript with no build step, hosted on GitHub Pages.
 
-## Stack
-Plain HTML, CSS, and JavaScript — no build step. Hosted on GitHub Pages.
-
-- `index.html` — page content
-- `styles.css` — clean minimal light theme + motion styles
-- `main.js` — custom cursor, magnetic buttons, 3D card tilt, scroll reveals,
-  animated counters, and device haptics (Vibration API on supported mobile)
+- `index.html` has all the content: the scroll scenes at the top, then experience, projects, and contact
+- `styles.css` has the layout and type
+- `world.js` draws the background on a canvas: Blue Ridge ridgelines, mist, stars, the constellation graph, and the circular lens
+- `main.js` turns scroll position into scene progress (letters drifting in, the lens, day to night to dawn), plus the nav highlighting and the phone menu
+- `jwks.json` is the public key set for the FHIR project's SMART backend auth, so leave it at the root
 
 ## Run locally
+
 ```bash
 python3 -m http.server 8123
-# open http://localhost:8123
 ```
 
-## Editing
-- Swap the `data-link="linkedin"` `href="#"` values in `index.html` for your real LinkedIn URL.
-- Replace `Pranav_Divichenchu_Resume.pdf` to update the résumé download.
+Then open http://localhost:8123.
+
+## Updating
+
+To update the résumé, replace `Pranav_Divichenchu_Resume.pdf`. Each scroll-driven element has `data-in="start,end"` and `data-out="start,end"`, which are fractions of its scene's scroll progress. After changing CSS or JS, bump the `?v=` number on the three asset links in `index.html` so returning visitors don't get a cached copy.

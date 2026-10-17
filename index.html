@@ -4,308 +4,298 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pranav Divichenchu</title>
-  <meta name="description" content="Pranav Divichenchu — CS student at Georgia Tech building AI infrastructure, ML systems, and products people use." />
+  <meta name="description" content="Pranav Divichenchu, founder of Karana and CS student at Georgia Tech. I build products people use, and the backend and ML systems underneath them." />
+  <meta property="og:title" content="Pranav Divichenchu" />
+  <meta property="og:description" content="Founder of Karana, CS at Georgia Tech. Open to Summer 2027 internships." />
+  <meta property="og:url" content="https://pranavdivichenchu.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#c9d2da" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%231b232d'/%3E%3Cpath d='M8 46 22 30l8 8 10-14 16 22z' fill='%23c9d2da'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Geist:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=13" />
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <!-- Motion chrome -->
-  <div class="scroll-progress" aria-hidden="true"></div>
-  <div class="cursor" aria-hidden="true"></div>
-  <div class="cursor-dot" aria-hidden="true"></div>
+  <canvas id="world" aria-hidden="true"></canvas>
+  <a class="skip" href="#work">Skip to experience</a>
 
   <!-- ============ NAV ============ -->
   <header class="nav">
-    <a href="#top" class="nav__brand magnetic" data-cursor>PD</a>
-    <nav class="nav__links">
-      <a href="#about" data-cursor>About</a>
-      <a href="#experience" data-cursor>Experience</a>
-      <a href="#projects" data-cursor>Projects</a>
-      <a href="#awards" data-cursor>Awards</a>
-      <a href="#contact" data-cursor>Contact</a>
+    <a class="nav__mark" href="#top" aria-label="Back to top">PD</a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#work">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="Pranav_Divichenchu_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
     </nav>
-    <a href="Pranav_Divichenchu_Resume.pdf" class="nav__resume magnetic" data-cursor target="_blank" rel="noopener">Resume ↗</a>
+    <button class="nav__icon nav__menu" type="button" data-menu aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
   </header>
 
-  <main id="top">
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="hero__bg" aria-hidden="true"><span></span><span></span><span></span></div>
-      <p class="hero__status" data-reveal><span class="dot"></span> Open to Summer 2027 internships</p>
-      <p class="hero__eyebrow" data-reveal data-reveal-delay="80">Ashburn, VA · Georgia Tech</p>
-      <h1 class="hero__name" data-splitlines>Pranav Divichenchu</h1>
-      <p class="hero__tagline" data-reveal data-reveal-delay="200">
-        CS student building <em>AI infrastructure</em>, machine-learning systems,
-        and products that reach real people.
-      </p>
-      <div class="hero__actions" data-reveal data-reveal-delay="320">
-        <a class="btn btn--primary magnetic" data-cursor href="#projects">See my work</a>
-        <a class="btn btn--ghost magnetic" data-cursor href="#contact">Get in touch</a>
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Menu">
+      <a href="#about">About</a>
+      <a href="#work">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="Pranav_Divichenchu_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- ============ SCENE 1: HERO ============ -->
+    <section class="scene scene--day" id="top" data-scene="hero" style="--len: 140">
+      <div class="stage stage--center">
+        <div class="hero">
+          <h1 class="hero__name scatter" data-intro data-out="0.35,0.9">Pranav Divichenchu</h1>
+          <p class="hero__sub" data-intro-fade data-out="0.3,0.8">Founder of Karana · Computer Science at Georgia Tech</p>
+          <div class="hero__actions" data-intro-fade data-out="0.2,0.6">
+            <a class="pill" href="#work">See my work</a>
+            <a class="link-btn" href="Pranav_Divichenchu_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+          </div>
+        </div>
+        <div class="cue" data-cue><span class="cue__line" aria-hidden="true"></span>Scroll down</div>
       </div>
-      <ul class="hero__links" data-reveal data-reveal-delay="420">
-        <!-- Swap the href="#" values below for your real profiles -->
-        <li><a href="mailto:pranavdivichenchu@gmail.com" data-cursor>Email</a></li>
-        <li><a href="https://github.com/PranavDivichenchu" data-link="github" data-cursor target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="#" data-link="linkedin" data-cursor target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
-      <div class="hero__scroll" aria-hidden="true"><span></span></div>
     </section>
 
-    <!-- ============ MARQUEE ============ -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>AI Infrastructure</span><span>·</span><span>Machine Learning</span><span>·</span><span>Quantitative Research</span><span>·</span><span>Product</span><span>·</span><span>Go &amp; Rust</span><span>·</span><span>Full-Stack</span><span>·</span>
-        <span>AI Infrastructure</span><span>·</span><span>Machine Learning</span><span>·</span><span>Quantitative Research</span><span>·</span><span>Product</span><span>·</span><span>Go &amp; Rust</span><span>·</span><span>Full-Stack</span><span>·</span>
+    <!-- ============ SCENE 2: HEY ============ -->
+    <section class="scene scene--day" id="about" data-scene="about" style="--len: 220" data-lens="0,0.12,0.9,1" data-jump="0.45">
+      <div class="stage stage--split">
+        <div class="lens" aria-hidden="true"></div>
+        <div class="story">
+          <p class="story__big scatter" data-in="0,0.12" data-out="0.9,1">Hey</p>
+          <p class="story__mid scatter" data-in="0.06,0.18" data-out="0.9,1">I'm Pranav.</p>
+          <p class="story__body" data-in="0.14,0.26" data-out="0.9,1">
+            I grew up in Ashburn, Virginia, about an hour from the Blue Ridge. Now I study computer science at
+            Georgia Tech, not far from where the same mountains end.
+          </p>
+          <p class="story__body" data-in="0.2,0.32" data-out="0.9,1">
+            I graduate in May 2028, and I'm looking for a Summer 2027 internship, ideally at an early-stage startup.
+          </p>
+        </div>
       </div>
+    </section>
+
+    <!-- ============ SCENE 3: KARANA ============ -->
+    <section class="scene scene--day" id="karana" data-scene="build" style="--len: 230" data-lens="0,0.12,0.9,1" data-jump="0.45">
+      <div class="stage stage--split stage--flip">
+        <div class="lens" aria-hidden="true"></div>
+        <div class="story">
+          <p class="story__mid scatter" data-in="0,0.12" data-out="0.9,1">Most of my time goes to</p>
+          <p class="story__big scatter" data-in="0.06,0.18" data-out="0.9,1">Karana</p>
+          <p class="story__body" data-in="0.14,0.26" data-out="0.9,1">
+            An app that teaches the meaning behind Hindu prayers, festivals, and verses. A small team and I started it
+            in August 2026, and it's on the App Store and Google Play.
+          </p>
+          <dl class="figures" data-in="0.2,0.32" data-out="0.9,1">
+            <div><dt>views</dt><dd>1M</dd></div>
+            <div><dt>users</dt><dd>5,000</dd></div>
+            <div><dt>profit</dt><dd>$1.5K</dd></div>
+          </dl>
+          <p data-in="0.24,0.36" data-out="0.9,1">
+            <a class="pill pill--small" href="https://getkarana.org" target="_blank" rel="noopener">Visit getkarana.org ↗</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE 4: NIGHT / SYSTEMS ============ -->
+    <section class="scene scene--night" id="systems" data-scene="night" style="--len: 220" data-jump="0.5">
+      <div class="stage stage--center">
+        <div class="story story--center">
+          <p class="story__mid scatter" data-in="0.16,0.3" data-out="0.92,1">The rest of the time I'm building</p>
+          <p class="story__big scatter" data-in="0.22,0.36" data-out="0.92,1">systems</p>
+          <p class="story__body" data-in="0.3,0.42" data-out="0.92,1">
+            Agent networks in Go and Rust, a FHIR backend that reads real patient records, ML models for policy and
+            finance, and a marketplace on Google Cloud.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTENT ============ -->
+    <div class="content">
+      <section class="block" id="work" aria-labelledby="work-h">
+        <header class="block__head">
+          <p class="block__kicker">Experience</p>
+          <h2 id="work-h">Where I've worked</h2>
+        </header>
+        <ol class="jobs">
+          <li class="job">
+            <div class="job__when">Aug 2026 – Now</div>
+            <div>
+              <h3><a href="https://getkarana.org" target="_blank" rel="noopener">Founder · Karana ↗</a></h3>
+              <p>
+                A prayer-learning app on Node/Express and Supabase Postgres, shipped to the App Store and Google Play
+                with Capacitor and RevenueCat. It has 1M views, 5,000 users, and $1.5K in profit so far. I seeded 58
+                prayers, 700 Gita verses, and 75 festivals in 11 languages, and generated 10,000+ narration clips
+                offline with open-source Indic TTS models in PyTorch.
+              </p>
+              <ul class="tags"><li>Node.js</li><li>Supabase</li><li>Postgres</li><li>Capacitor</li><li>RevenueCat</li><li>PyTorch</li></ul>
+            </div>
+          </li>
+          <li class="job">
+            <div class="job__when">Aug 2026 – Now</div>
+            <div>
+              <h3>Software Engineer · FHIR, Georgia Tech</h3>
+              <p>
+                Backend for a patient app that reads real health records from Cerner. I set up SMART on FHIR backend
+                auth for the Flask API with RS384 JWTs, a hosted JWKS, and six scopes, mapped 742 MedicationRequests
+                down to the 14 active orders the Medications tab shows, and wrote the JSON contracts and async Swift
+                client for four patient tabs.
+              </p>
+              <ul class="tags"><li>Python</li><li>Flask</li><li>FHIR</li><li>Swift</li><li>Swift Testing</li></ul>
+            </div>
+          </li>
+          <li class="job">
+            <div class="job__when">Jul – Aug 2026</div>
+            <div>
+              <h3>AI Intern, Infrastructure · Cloud9</h3>
+              <p>
+                Built a buyer–vendor marketplace from scratch as Python services on Cloud Run and Cloud Functions.
+                I wrote the scoring pipeline that ranks offerings from 200+ vendors by price and fit, split ingestion,
+                storage, and matching into separate services, and launched it with 100 buyers matched.
+              </p>
+              <ul class="tags"><li>Python</li><li>GCP</li><li>Cloud Run</li><li>Cloud Functions</li></ul>
+            </div>
+          </li>
+          <li class="job">
+            <div class="job__when">Jun – Aug 2026</div>
+            <div>
+              <h3>Machine Learning Engineering Intern · Politheon</h3>
+              <p>
+                Trained a LightGBM classifier that predicts bill passage from TF-IDF and 10 engineered features, for a
+                15% accuracy gain. Splitting the data by bill group and stripping stage-code leakage got it to 83% macro
+                F1. I also built keyword and semantic search over 2,000 bills with SQLite FTS5 and LSA, with a CLI and a
+                Streamlit UI.
+              </p>
+              <ul class="tags"><li>Python</li><li>LightGBM</li><li>scikit-learn</li><li>SQLite</li><li>Streamlit</li></ul>
+            </div>
+          </li>
+          <li class="job">
+            <div class="job__when">2024 – 2025</div>
+            <div>
+              <h3>Research Intern · University of Missouri</h3>
+              <p>
+                At the Trulaske College of Business, I scored 13M+ news articles with FinBERT, finance lexicons, and an
+                LLM API, and aggregated them into daily per-security signals with 60% accuracy. The strategy grew 1.5x
+                in backtests, and I co-authored a <em>Journal of Finance</em> submission on it with Prof. Kuntara
+                Pukthuanthong.
+              </p>
+              <ul class="tags"><li>Python</li><li>FinBERT</li><li>Hugging Face</li><li>pandas</li></ul>
+            </div>
+          </li>
+        </ol>
+        <a class="text-link" href="Pranav_Divichenchu_Resume.pdf" target="_blank" rel="noopener">Full résumé ↗</a>
+      </section>
+
+      <section class="block" id="projects" aria-labelledby="projects-h">
+        <header class="block__head">
+          <p class="block__kicker">Projects</p>
+          <h2 id="projects-h">Things I've built</h2>
+        </header>
+        <div class="projects">
+          <article class="project">
+            <div class="project__top"><h3>Khali</h3><span>2025 – 26</span></div>
+            <p class="project__sub">Short-form news app · Co-founder</p>
+            <p>
+              A "TikTok for news" iOS app in SwiftUI with 1,000+ App Store downloads. Each card merges one story's
+              coverage from many outlets, with left and right perspective views, two-voice podcast audio with
+              timestamped captions, and agree/disagree voting.
+            </p>
+            <ul class="tags"><li>SwiftUI</li><li>Combine</li><li>Supabase</li><li>AVFoundation</li></ul>
+          </article>
+          <article class="project">
+            <div class="project__top"><h3>B2Alpha</h3><span>2026</span></div>
+            <p class="project__sub">Infrastructure for AI agents</p>
+            <p>
+              Lets AI agents message each other and pay businesses. Go routing nodes relay signed messages over gRPC and
+              WebSockets, every node checks DIDs and Ed25519 signatures, and a Rust registry on Postgres tracks agents.
+              Payments run through Stripe Connect, there's a Twilio phone-call bridge, and the Python and TypeScript SDKs
+              have 84 tests.
+            </p>
+            <ul class="tags"><li>Go</li><li>Rust</li><li>gRPC</li><li>PostgreSQL</li><li>Stripe</li></ul>
+          </article>
+          <article class="project">
+            <div class="project__top"><h3>Nexus</h3><span>2026</span></div>
+            <p class="project__sub project__sub--award">Best Education Hack, GMU</p>
+            <p>
+              Turns one lesson into a game, a video, and a song. A five-agent LangGraph pipeline on Gemini plans, writes,
+              and play-tests Kaplay.js games, grounded in the Kaplay docs with ChromaDB RAG and checked for crashes in
+              headless Playwright. Videos render with Remotion.
+            </p>
+            <ul class="tags"><li>Next.js</li><li>LangGraph</li><li>Gemini</li><li>Supabase</li></ul>
+          </article>
+          <article class="project">
+            <div class="project__top"><h3>Hivemind</h3><span>2026</span></div>
+            <p class="project__sub">Agent marketplace · IndyHacks</p>
+            <p>
+              An open marketplace where browser-based AI agents find each other and work together. You give it a goal, a
+              coordinator splits it up and recruits agents by capability, and the result streams back live over
+              Server-Sent Events from a single Rust service.
+            </p>
+            <ul class="tags"><li>Rust</li><li>SSE</li><li>LLM agents</li></ul>
+          </article>
+          <article class="project project--wide">
+            <div class="project__top"><h3>AEGIS</h3><span>2026</span></div>
+            <p class="project__sub">GANs for drug discovery</p>
+            <p>
+              A pipeline that designs peptide inhibitors for sepsis-related proteases. Candidates from three GAN variants
+              (SupremeGAN, a conditional GAN, and WGAN-GP) get folded with ESMFold and docked with AutoDock Vina, across
+              781 docking runs on a 27-protease panel.
+            </p>
+            <ul class="tags"><li>Python</li><li>PyTorch</li><li>ESMFold</li><li>AutoDock Vina</li></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="more" aria-labelledby="more-h">
+        <header class="block__head">
+          <p class="block__kicker">Also</p>
+          <h2 id="more-h">Awards and earlier work</h2>
+        </header>
+        <div class="split">
+          <ul class="plain">
+            <li><span>Best Education Hack</span><span>GMU Hackathon · 2026</span></li>
+            <li><span>Best Overall</span><span>Rock Ridge Hackathon · 2024</span></li>
+            <li><span>Best Game</span><span>Academies of Loudoun · 2024</span></li>
+            <li><span>Best Overall</span><span>Academies of Loudoun · 2023</span></li>
+          </ul>
+          <ul class="plain">
+            <li><span>Mini Makers</span><span>Taught 400+ students to code · 2024 – 25</span></li>
+            <li><span>Cognicade Studios</span><span>5 educational games, 10,000+ plays · 2023 – 25</span></li>
+            <li><span>Languages</span><span>Python, Go, Rust, Swift, TypeScript, Java, C++, SQL</span></li>
+            <li><span>Tools</span><span>Next.js, Flask, SwiftUI, PyTorch, LangGraph, GCP, Supabase, gRPC</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contact-h">
+        <p class="contact__small">That's most of it.</p>
+        <h2 class="contact__big" id="contact-h">Say hi.</h2>
+        <p class="contact__body">
+          I'm looking for Summer 2027 internships, especially at early-stage startups. Email is the fastest way to reach me.
+        </p>
+        <div class="contact__actions">
+          <button class="pill pill--light" type="button" data-copy-email>pranavdivichenchu@gmail.com <span class="pill__hint">Copy</span></button>
+          <a class="pill pill--ghost" href="https://www.linkedin.com/in/pranav-divichenchu-4464a02a1" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="pill pill--ghost" href="https://github.com/PranavDivichenchu" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <footer class="colophon">
+          <p>The mountains are drawn in code on a canvas. No images, no frameworks.</p>
+          <p>© <span id="year">2026</span> Pranav Divichenchu</p>
+        </footer>
+      </section>
     </div>
-
-    <!-- ============ STAT STRIP ============ -->
-    <section class="stats">
-      <div class="stat" data-reveal><span class="stat__num" data-count="13" data-suffix="M+">0</span><span class="stat__label">financial articles modeled</span></div>
-      <div class="stat" data-reveal data-reveal-delay="100"><span class="stat__num" data-count="700" data-suffix="K+">0</span><span class="stat__label">views on Karana</span></div>
-      <div class="stat" data-reveal data-reveal-delay="200"><span class="stat__num" data-count="400" data-suffix="+">0</span><span class="stat__label">students taught to code</span></div>
-      <div class="stat" data-reveal data-reveal-delay="300"><span class="stat__num" data-count="1000" data-suffix="+">0</span><span class="stat__label">securities analyzed</span></div>
-    </section>
-
-    <!-- ============ ABOUT ============ -->
-    <section id="about" class="section">
-      <h2 class="section__title" data-reveal><span class="section__index">01</span> About</h2>
-      <div class="about">
-        <p data-reveal>
-          I'm a Computer Science student at the <strong>Georgia Institute of Technology</strong>
-          (BS, expected Dec 2028), and the salutatorian of Independence High School with a 3.74 GPA.
-        </p>
-        <p data-reveal data-reveal-delay="120">
-          My work sits where <strong>AI infrastructure</strong> meets things people actually use — from
-          decentralized agent-to-agent systems and ML policy-intelligence platforms to quantitative
-          finance research and mobile products with hundreds of thousands of views. I've published
-          research, led engineering teams, and taught hundreds of students to code.
-        </p>
-        <p data-reveal data-reveal-delay="240">
-          I like building from scratch, shipping fast, and measuring the impact.
-        </p>
-      </div>
-    </section>
-
-    <!-- ============ EXPERIENCE ============ -->
-    <section id="experience" class="section">
-      <h2 class="section__title" data-reveal><span class="section__index">02</span> Experience</h2>
-      <ol class="timeline">
-        <li class="entry" data-reveal>
-          <div class="entry__meta">
-            <span class="entry__date">2026</span>
-            <span class="entry__place">Remote</span>
-          </div>
-          <div class="entry__body">
-            <h3>AI Intern, Infrastructure <span class="entry__org">· Cloud9</span></h3>
-            <ul>
-              <li>Built a buyer–vendor matching platform from scratch on Google Cloud Platform, architecting the backend services that connect buyers with vendors.</li>
-              <li>Designed a pipeline that scores vendor offerings against buyer intent to surface the most relevant matches at scale.</li>
-            </ul>
-          </div>
-        </li>
-        <li class="entry" data-reveal>
-          <div class="entry__meta">
-            <span class="entry__date">2026</span>
-            <span class="entry__place">Remote</span>
-          </div>
-          <div class="entry__body">
-            <h3>Machine Learning Intern <span class="entry__org">· Politheon</span></h3>
-            <ul>
-              <li>Developed ML models for an AI policy-intelligence platform, engineering features that measurably improved predictive accuracy.</li>
-              <li>Cleaned large-scale datasets and integrated new data sources into the production prediction pipeline.</li>
-            </ul>
-          </div>
-        </li>
-        <li class="entry" data-reveal>
-          <div class="entry__meta">
-            <span class="entry__date">2024 – 2025</span>
-            <span class="entry__place">Columbia, MO</span>
-          </div>
-          <div class="entry__body">
-            <h3>Research Intern <span class="entry__org">· University of Missouri, Trulaske College of Business</span></h3>
-            <ul>
-              <li>Built a sentiment-analysis model over 13M+ financial articles to generate quantitative trading signals.</li>
-              <li>Co-authored a paper (submitted to the <em>Journal of Finance</em>) proposing a quantitative hedge-fund strategy; advised by Prof. Kuntara Pukthuanthong.</li>
-            </ul>
-          </div>
-        </li>
-        <li class="entry" data-reveal>
-          <div class="entry__meta">
-            <span class="entry__date">Summer 2024</span>
-            <span class="entry__place">Fairfax, VA</span>
-          </div>
-          <div class="entry__body">
-            <h3>Summer Research Intern <span class="entry__org">· George Mason University — ASSIP (~10% acceptance)</span></h3>
-            <ul>
-              <li>Modeled cross-market correlations and spillover effects across 1,000+ securities in Python and R.</li>
-              <li>Published findings and presented at four symposia within an 8-student lab on financial-market dynamics.</li>
-            </ul>
-          </div>
-        </li>
-        <li class="entry" data-reveal>
-          <div class="entry__meta">
-            <span class="entry__date">2023</span>
-            <span class="entry__place">Remote</span>
-          </div>
-          <div class="entry__body">
-            <h3>Lead Software Engineering Intern <span class="entry__org">· SNS Solutions LLC</span></h3>
-            <ul>
-              <li>Led 10 interns building an ML-powered resume-screening system (C#, UiPath, SQL); deployed company-wide across 500+ applications.</li>
-              <li>Cut manual review time 70% and helped secure a Department of Defense partnership.</li>
-            </ul>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <!-- ============ PROJECTS ============ -->
-    <section id="projects" class="section">
-      <h2 class="section__title" data-reveal><span class="section__index">03</span> Projects</h2>
-      <div class="projects">
-        <article class="card" data-tilt data-reveal>
-          <div class="card__head">
-            <h3>B2Alpha</h3>
-            <span class="card__date">2026</span>
-          </div>
-          <p class="card__sub">Decentralized AI-agent infrastructure</p>
-          <p>Scalable infrastructure for secure agent-to-agent communication and autonomous transactions — cryptographic identity (DIDs, Ed25519), autonomous payments via Stripe Connect, and a real-time telecom bridge for agent-to-phone call translation.</p>
-          <ul class="tags">
-            <li>Go</li><li>Rust</li><li>gRPC</li><li>PostgreSQL</li><li>WebSocket</li><li>Twilio</li>
-          </ul>
-        </article>
-
-        <article class="card" data-tilt data-reveal data-reveal-delay="80">
-          <div class="card__head">
-            <h3>AEGIS</h3>
-            <span class="card__date">2026</span>
-          </div>
-          <p class="card__sub">GAN drug discovery</p>
-          <p>A computational drug-design pipeline that uses GANs (SupremeGAN, Conditional GAN, WGAN-GP) to generate novel peptide inhibitors for sepsis-related proteases — validated with ESMFold structure prediction and AutoDock Vina across 781 docking simulations and a 27-protease panel.</p>
-          <ul class="tags">
-            <li>Python</li><li>PyTorch</li><li>GANs</li><li>ESMFold</li><li>AutoDock Vina</li>
-          </ul>
-        </article>
-
-        <article class="card" data-tilt data-reveal data-reveal-delay="160">
-          <div class="card__head">
-            <h3>Hivemind</h3>
-            <span class="card__date">2026</span>
-          </div>
-          <p class="card__sub">AI-agent marketplace · IndyHacks</p>
-          <p>An open marketplace where browser-native AI agents discover each other and collaborate. Give the hive a goal and a coordinator decomposes it, recruits online agents by capability, and assembles a result — all streaming live over Server-Sent Events from a single self-contained Rust service.</p>
-          <ul class="tags">
-            <li>Rust</li><li>SSE</li><li>LLM agents</li>
-          </ul>
-        </article>
-
-        <article class="card" data-tilt data-reveal>
-          <div class="card__head">
-            <h3>Karana</h3>
-            <span class="card__date">2026 – Present</span>
-          </div>
-          <p class="card__sub">Spiritual learning &amp; recitation app</p>
-          <p>A mobile-first app teaching Hindu prayers, festivals, and verses — grew to 700K+ views and 5K+ waitlist signups. Guided audio recitations, a personalized learning path, and Google/email auth across a four-section app.</p>
-          <ul class="tags">
-            <li>React</li><li>Supabase</li><li>Vercel</li>
-          </ul>
-        </article>
-
-        <article class="card" data-tilt data-reveal data-reveal-delay="160">
-          <div class="card__head">
-            <h3>Khali</h3>
-            <span class="card__date">2026 – Present</span>
-          </div>
-          <p class="card__sub">News discovery platform</p>
-          <p>Reimagining news as short-form, engaging content — "TikTok for news." Building a personalized recommendation algorithm that surfaces relevant stories based on user interests; leading product, UI/UX, and backend.</p>
-          <ul class="tags">
-            <li>React Native</li><li>Node.js</li>
-          </ul>
-        </article>
-
-        <article class="card" data-tilt data-reveal>
-          <div class="card__head">
-            <h3>Mini Makers</h3>
-            <span class="card__date">2024 – 2025</span>
-          </div>
-          <p class="card__sub">Coding-education nonprofit</p>
-          <p>Generated $8,000 teaching 400+ students across 8+ languages; official partner of DoSomething.org (501(c)(3)) for CS-education access, and partnered with the Sudeekshan Foundation to help fund 600+ medical surgeries.</p>
-          <ul class="tags">
-            <li>Python</li><li>Java</li><li>C++</li><li>JavaScript</li>
-          </ul>
-        </article>
-
-        <article class="card" data-tilt data-reveal data-reveal-delay="80">
-          <div class="card__head">
-            <h3>Cognicade Studios</h3>
-            <span class="card__date">2023 – 2025</span>
-          </div>
-          <p class="card__sub">Educational games</p>
-          <p>Published 5 educational games with 10,000+ plays reaching 90+ students; won $2,500+ in prizes. Partnered with the Loudoun Education Foundation and county administration; presented at 10 schools.</p>
-          <ul class="tags">
-            <li>Unity</li><li>C#</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============ SKILLS ============ -->
-    <section id="skills" class="section">
-      <h2 class="section__title" data-reveal><span class="section__index">04</span> Skills</h2>
-      <div class="skills">
-        <div class="skills__group" data-reveal>
-          <h4>Languages</h4>
-          <p>Python · Java · C++ · C# · JavaScript · SQL · R · Go · Rust · HTML/CSS</p>
-        </div>
-        <div class="skills__group" data-reveal data-reveal-delay="80">
-          <h4>Frameworks &amp; Libraries</h4>
-          <p>React · React Native · Node.js · TensorFlow · PyTorch · scikit-learn · Pandas · NumPy</p>
-        </div>
-        <div class="skills__group" data-reveal data-reveal-delay="160">
-          <h4>Tools &amp; Platforms</h4>
-          <p>Git · Google Cloud Platform · PostgreSQL · gRPC · WebSocket · Supabase · Stripe · Twilio · UiPath</p>
-        </div>
-        <div class="skills__group" data-reveal data-reveal-delay="240">
-          <h4>Spoken Languages</h4>
-          <p>English (Native) · Spanish (Seal of Biliteracy) · Telugu (Conversational)</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ AWARDS ============ -->
-    <section id="awards" class="section">
-      <h2 class="section__title" data-reveal><span class="section__index">05</span> Awards &amp; Recognition</h2>
-      <ul class="awards">
-        <li data-reveal><span class="awards__tag">Hackathon</span> Best Overall — Rock Ridge 2024, Academies of Loudoun 2023</li>
-        <li data-reveal data-reveal-delay="60"><span class="awards__tag">Hackathon</span> Best Game — Academies of Loudoun 2024</li>
-        <li data-reveal data-reveal-delay="120"><span class="awards__tag">Competition</span> FBLA Coding &amp; Software Development — 2nd State / 10th Nationals</li>
-        <li data-reveal data-reveal-delay="180"><span class="awards__tag">Competition</span> Science Olympiad Scrambler — 1st State</li>
-        <li data-reveal data-reveal-delay="240"><span class="awards__tag">Academic</span> Salutatorian, Independence HS — 3.74 GPA</li>
-        <li data-reveal data-reveal-delay="300"><span class="awards__tag">Language</span> Seal of Biliteracy (Spanish)</li>
-      </ul>
-    </section>
-
-    <!-- ============ CONTACT ============ -->
-    <section id="contact" class="section section--contact">
-      <h2 class="section__title" data-reveal><span class="section__index">06</span> Get in touch</h2>
-      <p class="contact__lead" data-reveal data-reveal-delay="80">
-        I'm open to internships, research, and collaborations. The fastest way to reach me is email.
-      </p>
-      <div class="contact__links" data-reveal data-reveal-delay="160">
-        <a class="btn btn--primary magnetic" data-cursor href="mailto:pranavdivichenchu@gmail.com">pranavdivichenchu@gmail.com</a>
-        <a class="btn btn--ghost magnetic" data-cursor href="https://github.com/PranavDivichenchu" data-link="github" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn btn--ghost magnetic" data-cursor href="#" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </section>
   </main>
 
-  <footer class="footer">
-    <span>© <span id="year"></span> Pranav Divichenchu</span>
-    <span>Ashburn, VA · Built from scratch</span>
-  </footer>
+  <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="main.js"></script>
+  <script src="world.js?v=13"></script>
+  <script src="main.js?v=13"></script>
 </body>
 </html>
