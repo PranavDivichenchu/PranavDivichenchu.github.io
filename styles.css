@@ -460,3 +460,6 @@ main { position: relative; z-index: 1; }
 /* The school scene: text sits in the upper sky so the schoolhouse on the ridge stays visible */
 .story--dream { align-self: flex-start; margin-top: 10vh; }
 .content--end { padding-top: 0; }
+
+.project__links { display: flex; gap: 18px; margin-top: 16px; }
+.project__links .project__link { margin-top: 0; }

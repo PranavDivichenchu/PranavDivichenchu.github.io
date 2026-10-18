@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Geist:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20" />
+  <link rel="stylesheet" href="styles.css?v=21" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -108,7 +108,7 @@
           <p class="story__mid scatter" data-in="0.16,0.3" data-out="0.92,1">The rest of the time I'm building</p>
           <p class="story__big scatter" data-in="0.22,0.36" data-out="0.92,1">projects</p>
           <p class="story__body" data-in="0.3,0.42" data-out="0.92,1">
-            AI agent networks, iOS apps, ML models, and a lot of hackathon builds. You can see them all further down.
+            AI agents, iOS apps, ML models, and a lot of hackathons. The best of them are further down.
           </p>
         </div>
       </div>
@@ -197,6 +197,33 @@
         </header>
         <div class="projects">
           <article class="project">
+            <div class="project__top"><h3>Sprout</h3><span>2026</span></div>
+            <p class="project__sub project__sub--award">Winner, Fetch.ai ASI:One Agent Challenge · MHacks 2026</p>
+            <p>
+              A study partner in ASI:One that maps your syllabus, teaches and quizzes your weakest topics, and remembers
+              what you've mastered across chats. Four of us built it, and I wrote the agents and the interactive cards.
+              Running the tutor and curriculum inside one agent cut each tap from about 22 seconds to about 9.
+            </p>
+            <ul class="tags"><li>Python</li><li>Fetch.ai uAgents</li><li>SpacetimeDB</li><li>Next.js</li></ul>
+            <div class="project__links">
+              <a class="project__link" href="https://sproutlearn.tech/" target="_blank" rel="noopener">Site ↗</a>
+              <a class="project__link" href="https://github.com/ArushNo1/sprout" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project__top"><h3>Nexus</h3><span>2026</span></div>
+            <p class="project__sub project__sub--award">1st Place, Education Track · HackFax × PatriotHacks 2026</p>
+            <p>
+              Turns one lesson into a game, a video, and a song. A five-agent LangGraph pipeline on Gemini plans, writes,
+              and play-tests Kaplay.js games, grounded in the Kaplay docs with ChromaDB RAG and checked for crashes in
+              headless Playwright. Videos render with Remotion.
+            </p>
+            <ul class="tags"><li>Next.js</li><li>LangGraph</li><li>Gemini</li><li>Supabase</li></ul>
+            <div class="project__links">
+              <a class="project__link" href="https://github.com/ArushNo1/Nexus" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+          <article class="project">
             <div class="project__top"><h3>Khali</h3><span>2025 – 26</span></div>
             <p class="project__sub">Short-form news app · Co-founder</p>
             <p>
@@ -216,50 +243,23 @@
               have 84 tests.
             </p>
             <ul class="tags"><li>Go</li><li>Rust</li><li>gRPC</li><li>PostgreSQL</li><li>Stripe</li></ul>
-            <a class="project__link" href="https://github.com/PranavDivichenchu/B2Alpha" target="_blank" rel="noopener">GitHub ↗</a>
-          </article>
-          <article class="project">
-            <div class="project__top"><h3>Nexus</h3><span>2026</span></div>
-            <p class="project__sub project__sub--award">Best Education Hack, GMU</p>
-            <p>
-              Turns one lesson into a game, a video, and a song. A five-agent LangGraph pipeline on Gemini plans, writes,
-              and play-tests Kaplay.js games, grounded in the Kaplay docs with ChromaDB RAG and checked for crashes in
-              headless Playwright. Videos render with Remotion.
-            </p>
-            <ul class="tags"><li>Next.js</li><li>LangGraph</li><li>Gemini</li><li>Supabase</li></ul>
-          </article>
-          <article class="project">
-            <div class="project__top"><h3>Sprout</h3><span>2026</span></div>
-            <p class="project__sub project__sub--award">Fetch.ai track winner, MHacks</p>
-            <p>
-              A study agent in ASI:One that remembers what each student has mastered across chats. Four of us built it at
-              MHacks, and I wrote the agents and the interactive cards. Running the tutor and curriculum inside one agent
-              cut each tap from about 22 seconds to about 9. It also has live quiz and arcade games.
-            </p>
-            <ul class="tags"><li>Python</li><li>Fetch.ai uAgents</li><li>SpacetimeDB</li><li>Vercel</li></ul>
-            <a class="project__link" href="https://github.com/ArushNo1/sprout" target="_blank" rel="noopener">GitHub ↗</a>
+            <div class="project__links">
+              <a class="project__link" href="https://github.com/PranavDivichenchu/B2Alpha" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
           </article>
           <article class="project">
             <div class="project__top"><h3>Vibez</h3><span>2026</span></div>
-            <p class="project__sub">Visual IDE · Team project</p>
+            <p class="project__sub">Visual IDE · HackGT 13</p>
             <p>
-              An IDE where your codebase is a node graph built from what actually ran. I built the multiplayer side, where
-              each teammate's own AI agent (Claude Code or Codex) shares presence, file claims, and live edits over
-              Supabase, so two people's agents don't step on the same page.
+              A visual language on top of JavaScript that makes vibe-coded projects easy to understand and edit, where
+              your codebase is a node graph built from what actually ran. I built the multiplayer side, so each
+              teammate's own AI agent shares presence, file claims, and live edits over Supabase.
             </p>
-            <ul class="tags"><li>TypeScript</li><li>VS Code</li><li>Supabase</li><li>MCP</li></ul>
-            <a class="project__link" href="https://github.com/PranavDivichenchu/vibez" target="_blank" rel="noopener">GitHub ↗</a>
-          </article>
-          <article class="project">
-            <div class="project__top"><h3>Hivemind</h3><span>2026</span></div>
-            <p class="project__sub">Agent marketplace · IndyHacks</p>
-            <p>
-              An open marketplace where browser-based AI agents find each other and work together. You give it a goal, a
-              coordinator splits it up and recruits agents by capability, and the result streams back live over
-              Server-Sent Events from a single Rust service.
-            </p>
-            <ul class="tags"><li>Rust</li><li>SSE</li><li>LLM agents</li></ul>
-            <a class="project__link" href="https://github.com/PranavDivichenchu/indyHacks" target="_blank" rel="noopener">GitHub ↗</a>
+            <ul class="tags"><li>TypeScript</li><li>Electron</li><li>Supabase</li><li>MCP</li></ul>
+            <div class="project__links">
+              <a class="project__link" href="https://www.getvibez.tech/" target="_blank" rel="noopener">Site ↗</a>
+              <a class="project__link" href="https://github.com/PranavDivichenchu/vibez" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
           </article>
           <article class="project">
             <div class="project__top"><h3>AEGIS</h3><span>2026</span></div>
@@ -270,51 +270,24 @@
               781 docking runs on a 27-protease panel.
             </p>
             <ul class="tags"><li>Python</li><li>PyTorch</li><li>ESMFold</li><li>AutoDock Vina</li></ul>
-            <a class="project__link" href="https://github.com/PranavDivichenchu/sepsis-protease-gan-docking" target="_blank" rel="noopener">GitHub ↗</a>
+            <div class="project__links">
+              <a class="project__link" href="https://github.com/PranavDivichenchu/sepsis-protease-gan-docking" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
           </article>
-          <article class="project">
-            <div class="project__top"><h3>Nutshell</h3><span>2026</span></div>
-            <p class="project__sub">Food database app for iOS</p>
+          <article class="project project--wide">
+            <div class="project__top"><h3>Bread to Dough</h3><span>2024</span></div>
+            <p class="project__sub project__sub--award">1st Place Overall and Best 9–10th Grade · Phoenix Hacks 2024</p>
             <p>
-              A SwiftUI app for searching the Open Food Facts database, with live search, barcode lookup, Nutri-Score,
-              NOVA, and Eco-Score, and offline saved products. It's built on @Observable and structured concurrency and
-              has 117 Swift Testing tests.
+              A bread tycoon game in Unity. A bread shortage has thrown the world into chaos, and you farm different
+              kinds of bread to save humanity and reach ascension. Three of us built it in a weekend.
             </p>
-            <ul class="tags"><li>SwiftUI</li><li>Swift Concurrency</li><li>Swift Testing</li></ul>
-            <a class="project__link" href="https://github.com/PranavDivichenchu/nutshell" target="_blank" rel="noopener">GitHub ↗</a>
-          </article>
-          <article class="project">
-            <div class="project__top"><h3>LeanBulk</h3><span>2026</span></div>
-            <p class="project__sub">Fitness app for iOS</p>
-            <p>
-              A personal fitness app in SwiftUI and SwiftData. You take a photo of a meal and Gemini logs it, or scan a
-              barcode, and it tracks lifts, weight, and strength over time, with reminders for workouts, meals, and water.
-            </p>
-            <ul class="tags"><li>SwiftUI</li><li>SwiftData</li><li>Gemini</li></ul>
-          </article>
-          <article class="project">
-            <div class="project__top"><h3>Canvas Plus</h3><span>2026</span></div>
-            <p class="project__sub">iOS Club at Georgia Tech</p>
-            <p>
-              The iOS Club's Canvas client. I opened pull requests for a Today view with overdue and due-soon sections and
-              new widget sizes, a grade calculator fix, and the first read tools for an on-device Canvas agent.
-            </p>
-            <ul class="tags"><li>SwiftUI</li><li>WidgetKit</li><li>Foundation Models</li></ul>
-            <a class="project__link" href="https://github.com/gtiosclub/CanvasPlusPlayground" target="_blank" rel="noopener">GitHub ↗</a>
+            <ul class="tags"><li>Unity</li><li>C#</li></ul>
+            <div class="project__links">
+              <a class="project__link" href="https://2900xt.github.io/bread2dough-build/" target="_blank" rel="noopener">Play it ↗</a>
+              <a class="project__link" href="https://github.com/2900xt/phx-hacks-24-v4" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
           </article>
         </div>
-
-        <h3 class="mini-head">More things I've built</h3>
-        <ul class="minor">
-          <li><span>Where's my class?</span><span>Campus navigation app for my GT schedule: the next class, walking directions along campus paths, and a live compass. Next.js.</span></li>
-          <li><span>GT Calendar</span><span>Installable app that puts every Canvas deadline from my six courses in one calendar. Next.js.</span></li>
-          <li><span>Kalshi bot</span><span>Async Python trading bot for Kalshi prediction markets, with weather, sportsbook-arbitrage, and market-making strategies, a risk manager, and backtests.</span></li>
-          <li><span>Strain</span><span>TypeScript static analyzer built on ts-morph that flags insecure patterns in AI-generated code.</span></li>
-          <li><span>Oblivion</span><span>Static analysis that follows personal data through TypeScript and fails the build when it reaches a destination without a policy guard.</span></li>
-          <li><span>FTC Central</span><span>Scouting and team-management site for FTC robotics, built with my team, Absolute Zero. Next.js.</span></li>
-          <li><span>Transign</span><span>My first SwiftUI app, with camera and video capture and sign-in screens.</span></li>
-          <li><span>Plundr.io and Black Iron</span><span>Two games in Unity and C#: a two-player game and a mining game.</span></li>
-        </ul>
       </section>
 
       <section class="block" id="more" aria-labelledby="more-h">
@@ -324,8 +297,9 @@
         </header>
         <div class="split">
           <ul class="plain">
-            <li><span>Best Education Hack</span><span>GMU Hackathon · 2026</span></li>
-            <li><span>Best Overall</span><span>Rock Ridge Hackathon · 2024</span></li>
+            <li><span>Winner, Fetch.ai ASI:One Agent Challenge</span><span>MHacks · 2026</span></li>
+            <li><span>1st Place, Education Track</span><span>HackFax × PatriotHacks · 2026</span></li>
+            <li><span>1st Place Overall and Best 9–10th Grade</span><span>Phoenix Hacks · 2024</span></li>
             <li><span>Best Game</span><span>Academies of Loudoun · 2024</span></li>
             <li><span>Best Overall</span><span>Academies of Loudoun · 2023</span></li>
           </ul>
@@ -375,7 +349,7 @@
 
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="world.js?v=20"></script>
-  <script src="main.js?v=20"></script>
+  <script src="world.js?v=21"></script>
+  <script src="main.js?v=21"></script>
 </body>
 </html>
