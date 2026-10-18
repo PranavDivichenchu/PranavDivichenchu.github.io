@@ -6,7 +6,7 @@
   <title>Pranav Divichenchu</title>
   <meta name="description" content="Pranav Divichenchu, founder of Karana and CS student at Georgia Tech. I build products people use, and the backend and ML systems underneath them." />
   <meta property="og:title" content="Pranav Divichenchu" />
-  <meta property="og:description" content="Founder of Karana, CS at Georgia Tech. Open to Summer 2027 internships." />
+  <meta property="og:description" content="Founder of Karana and CS student at Georgia Tech, building AI agents, backends, and iOS apps." />
   <meta property="og:url" content="https://pranavdivichenchu.github.io/" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#c9d2da" />
@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Geist:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="styles.css?v=18" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -70,20 +70,18 @@
           <p class="story__big scatter" data-in="0,0.12" data-out="0.9,1">Hey</p>
           <p class="story__mid scatter" data-in="0.06,0.18" data-out="0.9,1">I'm Pranav.</p>
           <p class="story__body" data-in="0.14,0.26" data-out="0.9,1">
-            I grew up in Ashburn, Virginia, about an hour from the Blue Ridge. Now I study computer science at
-            Georgia Tech, not far from where the same mountains end.
-          </p>
-          <p class="story__body" data-in="0.2,0.32" data-out="0.9,1">
-            I graduate in May 2028, and I'm looking for a Summer 2027 internship, ideally at an early-stage startup.
+            I'm a computer science student at Georgia Tech. I like building.
           </p>
         </div>
       </div>
     </section>
 
     <!-- ============ SCENE 3: KARANA ============ -->
-    <section class="scene scene--day" id="karana" data-scene="build" style="--len: 230" data-lens="0,0.12,0.9,1" data-jump="0.45">
+    <section class="scene scene--day" id="karana" data-scene="build" style="--len: 230" data-jump="0.45">
       <div class="stage stage--split stage--flip">
-        <div class="lens" aria-hidden="true"></div>
+        <a class="app-icon" href="https://getkarana.org" target="_blank" rel="noopener" data-in="0,0.14" data-out="0.9,1">
+          <img src="images/karana-icon.png" width="512" height="512" alt="Karana app icon" />
+        </a>
         <div class="story">
           <p class="story__mid scatter" data-in="0,0.12" data-out="0.9,1">Most of my time goes to</p>
           <p class="story__big scatter" data-in="0.06,0.18" data-out="0.9,1">Karana</p>
@@ -108,10 +106,9 @@
       <div class="stage stage--center">
         <div class="story story--center">
           <p class="story__mid scatter" data-in="0.16,0.3" data-out="0.92,1">The rest of the time I'm building</p>
-          <p class="story__big scatter" data-in="0.22,0.36" data-out="0.92,1">systems</p>
+          <p class="story__big scatter" data-in="0.22,0.36" data-out="0.92,1">projects</p>
           <p class="story__body" data-in="0.3,0.42" data-out="0.92,1">
-            Agent networks in Go and Rust, a FHIR backend that reads real patient records, ML models for policy and
-            finance, and a marketplace on Google Cloud.
+            AI agent networks, iOS apps, ML models, and a lot of hackathon builds. You can see them all further down.
           </p>
         </div>
       </div>
@@ -128,7 +125,7 @@
           <li class="job">
             <div class="job__when">Aug 2026 – Now</div>
             <div>
-              <h3><a href="https://getkarana.org" target="_blank" rel="noopener">Founder · Karana ↗</a></h3>
+              <h3 class="job__title-icon"><img src="images/karana-icon.png" width="28" height="28" alt="" /><a href="https://getkarana.org" target="_blank" rel="noopener">Founder · Karana ↗</a></h3>
               <p>
                 A prayer-learning app on Node/Express and Supabase Postgres, shipped to the App Store and Google Play
                 with Capacitor and RevenueCat. It has 1M views, 5,000 users, and $1.5K in profit so far. I seeded 58
@@ -219,6 +216,7 @@
               have 84 tests.
             </p>
             <ul class="tags"><li>Go</li><li>Rust</li><li>gRPC</li><li>PostgreSQL</li><li>Stripe</li></ul>
+            <a class="project__link" href="https://github.com/PranavDivichenchu/B2Alpha" target="_blank" rel="noopener">GitHub ↗</a>
           </article>
           <article class="project">
             <div class="project__top"><h3>Nexus</h3><span>2026</span></div>
@@ -231,6 +229,28 @@
             <ul class="tags"><li>Next.js</li><li>LangGraph</li><li>Gemini</li><li>Supabase</li></ul>
           </article>
           <article class="project">
+            <div class="project__top"><h3>Sprout</h3><span>2026</span></div>
+            <p class="project__sub project__sub--award">Fetch.ai track winner, MHacks</p>
+            <p>
+              A study agent in ASI:One that remembers what each student has mastered across chats. Four of us built it at
+              MHacks, and I wrote the agents and the interactive cards. Running the tutor and curriculum inside one agent
+              cut each tap from about 22 seconds to about 9. It also has live quiz and arcade games.
+            </p>
+            <ul class="tags"><li>Python</li><li>Fetch.ai uAgents</li><li>SpacetimeDB</li><li>Vercel</li></ul>
+            <a class="project__link" href="https://github.com/ArushNo1/sprout" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+          <article class="project">
+            <div class="project__top"><h3>Vibez</h3><span>2026</span></div>
+            <p class="project__sub">Visual IDE · Team project</p>
+            <p>
+              An IDE where your codebase is a node graph built from what actually ran. I built the multiplayer side, where
+              each teammate's own AI agent (Claude Code or Codex) shares presence, file claims, and live edits over
+              Supabase, so two people's agents don't step on the same page.
+            </p>
+            <ul class="tags"><li>TypeScript</li><li>VS Code</li><li>Supabase</li><li>MCP</li></ul>
+            <a class="project__link" href="https://github.com/PranavDivichenchu/vibez" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+          <article class="project">
             <div class="project__top"><h3>Hivemind</h3><span>2026</span></div>
             <p class="project__sub">Agent marketplace · IndyHacks</p>
             <p>
@@ -239,8 +259,9 @@
               Server-Sent Events from a single Rust service.
             </p>
             <ul class="tags"><li>Rust</li><li>SSE</li><li>LLM agents</li></ul>
+            <a class="project__link" href="https://github.com/PranavDivichenchu/indyHacks" target="_blank" rel="noopener">GitHub ↗</a>
           </article>
-          <article class="project project--wide">
+          <article class="project">
             <div class="project__top"><h3>AEGIS</h3><span>2026</span></div>
             <p class="project__sub">GANs for drug discovery</p>
             <p>
@@ -249,8 +270,51 @@
               781 docking runs on a 27-protease panel.
             </p>
             <ul class="tags"><li>Python</li><li>PyTorch</li><li>ESMFold</li><li>AutoDock Vina</li></ul>
+            <a class="project__link" href="https://github.com/PranavDivichenchu/sepsis-protease-gan-docking" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+          <article class="project">
+            <div class="project__top"><h3>Nutshell</h3><span>2026</span></div>
+            <p class="project__sub">Food database app for iOS</p>
+            <p>
+              A SwiftUI app for searching the Open Food Facts database, with live search, barcode lookup, Nutri-Score,
+              NOVA, and Eco-Score, and offline saved products. It's built on @Observable and structured concurrency and
+              has 117 Swift Testing tests.
+            </p>
+            <ul class="tags"><li>SwiftUI</li><li>Swift Concurrency</li><li>Swift Testing</li></ul>
+            <a class="project__link" href="https://github.com/PranavDivichenchu/nutshell" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+          <article class="project">
+            <div class="project__top"><h3>LeanBulk</h3><span>2026</span></div>
+            <p class="project__sub">Fitness app for iOS</p>
+            <p>
+              A personal fitness app in SwiftUI and SwiftData. You take a photo of a meal and Gemini logs it, or scan a
+              barcode, and it tracks lifts, weight, and strength over time, with reminders for workouts, meals, and water.
+            </p>
+            <ul class="tags"><li>SwiftUI</li><li>SwiftData</li><li>Gemini</li></ul>
+          </article>
+          <article class="project">
+            <div class="project__top"><h3>Canvas Plus</h3><span>2026</span></div>
+            <p class="project__sub">iOS Club at Georgia Tech</p>
+            <p>
+              The iOS Club's Canvas client. I opened pull requests for a Today view with overdue and due-soon sections and
+              new widget sizes, a grade calculator fix, and the first read tools for an on-device Canvas agent.
+            </p>
+            <ul class="tags"><li>SwiftUI</li><li>WidgetKit</li><li>Foundation Models</li></ul>
+            <a class="project__link" href="https://github.com/gtiosclub/CanvasPlusPlayground" target="_blank" rel="noopener">GitHub ↗</a>
           </article>
         </div>
+
+        <h3 class="mini-head">More things I've built</h3>
+        <ul class="minor">
+          <li><span>Where's my class?</span><span>Campus navigation app for my GT schedule: the next class, walking directions along campus paths, and a live compass. Next.js.</span></li>
+          <li><span>GT Calendar</span><span>Installable app that puts every Canvas deadline from my six courses in one calendar. Next.js.</span></li>
+          <li><span>Kalshi bot</span><span>Async Python trading bot for Kalshi prediction markets, with weather, sportsbook-arbitrage, and market-making strategies, a risk manager, and backtests.</span></li>
+          <li><span>Strain</span><span>TypeScript static analyzer built on ts-morph that flags insecure patterns in AI-generated code.</span></li>
+          <li><span>Oblivion</span><span>Static analysis that follows personal data through TypeScript and fails the build when it reaches a destination without a policy guard.</span></li>
+          <li><span>FTC Central</span><span>Scouting and team-management site for FTC robotics, built with my team, Absolute Zero. Next.js.</span></li>
+          <li><span>Transign</span><span>My first SwiftUI app, with camera and video capture and sign-in screens.</span></li>
+          <li><span>Plundr.io and Black Iron</span><span>Two games in Unity and C#: a two-player game and a mining game.</span></li>
+        </ul>
       </section>
 
       <section class="block" id="more" aria-labelledby="more-h">
@@ -278,7 +342,7 @@
         <p class="contact__small">That's most of it.</p>
         <h2 class="contact__big" id="contact-h">Say hi.</h2>
         <p class="contact__body">
-          I'm looking for Summer 2027 internships, especially at early-stage startups. Email is the fastest way to reach me.
+          If you want to talk about something you're building, or something I am, email is the fastest way to reach me.
         </p>
         <div class="contact__actions">
           <button class="pill pill--light" type="button" data-copy-email>pranavdivichenchu@gmail.com <span class="pill__hint">Copy</span></button>
@@ -295,7 +359,7 @@
 
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="world.js?v=13"></script>
-  <script src="main.js?v=13"></script>
+  <script src="world.js?v=18"></script>
+  <script src="main.js?v=18"></script>
 </body>
 </html>
