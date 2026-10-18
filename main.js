@@ -110,7 +110,9 @@
 
     var H = byName.hero.p, A = byName.about.p, B = byName.build.p, Nt = byName.night.p;
     var night = smooth(0, 0.3, Nt);
-    var dawn = contact ? clamp(1 - contact.getBoundingClientRect().top / vh, 0, 1) : 0;
+    // Dawn comes up during the school scene and stays for the contact section after it.
+    var dawn = byName.dream ? smooth(0, 0.45, byName.dream.p) : 0;
+    if (contact) dawn = Math.max(dawn, clamp(1 - contact.getBoundingClientRect().top / vh, 0, 1));
 
     // Story progress drives the camera rising above the ridges.
     var nightRect = byName.night.el.getBoundingClientRect();

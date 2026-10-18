@@ -99,7 +99,7 @@
         }
       }
 
-      this.layers.push({ path: path, t: t, depth: 0.1 + 0.9 * Math.pow(t, 1.5), base: base });
+      this.layers.push({ path: path, t: t, depth: 0.1 + 0.9 * Math.pow(t, 1.5), base: base, yAt: yAt });
     }
 
     var mr = mulberry32(42);
@@ -233,6 +233,7 @@
       // The graph fades out at the end so it doesn't run through the contact text.
       if (P.graph > 0.001 && P.dawn < 0.98) this.drawGraph(night * (1 - P.dawn), drift);
     }
+    if (!lens && P.dawn > 0.2) this.drawPlane(clamp((P.dawn - 0.2) / 0.5, 0, 1));
 
     // Ridges, with mist between them
     for (i = 0; i < N; i++) {
@@ -245,6 +246,8 @@
       ctx.translate(offX, offY);
       ctx.fillStyle = rgb(this.layerColor(i, night, fog, lens));
       ctx.fill(L.path);
+      // The school sits on this ridge at dawn, at the very end of the page.
+      if (!lens && i === 2 && P.dawn > 0.15) this.drawSchool(L, clamp((P.dawn - 0.15) / 0.6, 0, 1), this.layerColor(i, night, fog, false));
       ctx.restore();
 
       var mc = lens ? PAL.dayMist : mix(PAL.dayMist, PAL.nightMist, night);
@@ -267,6 +270,100 @@
       ctx.fillStyle = rgb(mix(PAL.dayMist, PAL.nightMist, night), (fog - 0.5) * 0.7);
       ctx.fillRect(0, 0, w, h);
     }
+  };
+
+  // A one-room schoolhouse with a bell tower, drawn as part of the ridge, with warm lit windows.
+  World.prototype.drawSchool = function (L, a, color) {
+    var ctx = this.ctx, w = this.w, h = this.h;
+    var narrow = w < 700;
+    var x = w * (narrow ? 0.5 : 0.82);
+    var u = Math.min(h * 0.11, w * (narrow ? 0.16 : 0.075));
+    var y = Math.min(L.yAt(x - u), L.yAt(x), L.yAt(x + u)) + u * 0.08; // ground under the whole building
+    var bw = u * 1.7, bh = u * 0.85, roof = u * 0.5;
+    var tw = u * 0.34, th = u * 0.38, tRoof = u * 0.32;
+    ctx.save();
+    ctx.globalAlpha = a;
+    // warm halo so the dark silhouette reads against the hills
+    var hy = y - bh * 0.8;
+    var halo = ctx.createRadialGradient(x, hy, 0, x, hy, u * 3.2);
+    halo.addColorStop(0, 'rgba(255, 190, 120, 0.42)');
+    halo.addColorStop(0.45, 'rgba(255, 170, 100, 0.14)');
+    halo.addColorStop(1, 'rgba(255, 170, 100, 0)');
+    ctx.fillStyle = halo;
+    ctx.fillRect(x - u * 3.2, hy - u * 3.2, u * 6.4, u * 6.4);
+    ctx.fillStyle = rgb(color);
+    ctx.beginPath();
+    // body and gable roof
+    ctx.moveTo(x - bw / 2 - u * 0.08, y - bh);
+    ctx.lineTo(x, y - bh - roof);
+    ctx.lineTo(x + bw / 2 + u * 0.08, y - bh);
+    ctx.lineTo(x + bw / 2, y - bh);
+    ctx.lineTo(x + bw / 2, y + u * 0.3);
+    ctx.lineTo(x - bw / 2, y + u * 0.3);
+    ctx.lineTo(x - bw / 2, y - bh);
+    ctx.closePath();
+    ctx.fill();
+    // bell tower
+    var tb = y - bh - roof * 0.55;
+    ctx.fillRect(x - tw / 2, tb - th, tw, th + roof * 0.3);
+    ctx.beginPath();
+    ctx.moveTo(x - tw / 2 - u * 0.05, tb - th);
+    ctx.lineTo(x, tb - th - tRoof);
+    ctx.lineTo(x + tw / 2 + u * 0.05, tb - th);
+    ctx.closePath();
+    ctx.fill();
+    // flagpole
+    ctx.fillRect(x - u * 0.012, tb - th - tRoof - u * 0.32, u * 0.024, u * 0.34);
+    ctx.beginPath();
+    ctx.moveTo(x + u * 0.012, tb - th - tRoof - u * 0.32);
+    ctx.lineTo(x + u * 0.2, tb - th - tRoof - u * 0.25);
+    ctx.lineTo(x + u * 0.012, tb - th - tRoof - u * 0.18);
+    ctx.fill();
+    // lit windows, a door, and the bell
+    var glow = 'rgba(255, 196, 120, ' + (0.9 * a) + ')';
+    ctx.shadowColor = 'rgba(255, 180, 90, ' + (0.8 * a) + ')';
+    ctx.shadowBlur = u * 0.35;
+    ctx.fillStyle = glow;
+    var ww = u * 0.22, wh = u * 0.28, wy = y - bh + u * 0.2;
+    [-0.62, -0.32, 0.32, 0.62].forEach(function (k) { ctx.fillRect(x + k * bw / 1.45 - ww / 2, wy, ww, wh); });
+    ctx.fillRect(x - u * 0.13, y - u * 0.4, u * 0.26, u * 0.4);
+    ctx.beginPath(); ctx.arc(x, tb - th * 0.5, u * 0.07, 0, 6.283); ctx.fill();
+    ctx.restore();
+  };
+
+  // A small plane crossing the dawn sky with a fading contrail.
+  World.prototype.drawPlane = function (a) {
+    var ctx = this.ctx, w = this.w, h = this.h;
+    var period = 18, q = ((this.t % period) / period);
+    var x = -0.1 * w + q * 1.2 * w;
+    var y = h * (0.16 + 0.04 * Math.sin(q * Math.PI));
+    var tail = w * 0.28;
+    var g = ctx.createLinearGradient(x - tail, y, x, y);
+    g.addColorStop(0, 'rgba(255, 236, 214, 0)');
+    g.addColorStop(1, 'rgba(255, 236, 214, ' + (0.45 * a) + ')');
+    ctx.strokeStyle = g;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(x - tail, y + h * 0.01);
+    ctx.quadraticCurveTo(x - tail * 0.5, y + h * 0.004, x - 8, y);
+    ctx.stroke();
+    var s = Math.max(7, Math.min(w, h) * 0.011);
+    ctx.fillStyle = 'rgba(255, 244, 228, ' + a + ')';
+    ctx.beginPath();
+    ctx.moveTo(x + s * 1.4, y);              // nose
+    ctx.lineTo(x - s * 1.2, y - s * 0.18);
+    ctx.lineTo(x - s * 1.2, y + s * 0.18);
+    ctx.closePath();
+    ctx.moveTo(x + s * 0.2, y);              // wings
+    ctx.lineTo(x - s * 0.5, y - s * 1.1);
+    ctx.lineTo(x - s * 0.15, y);
+    ctx.lineTo(x - s * 0.5, y + s * 1.1);
+    ctx.closePath();
+    ctx.moveTo(x - s * 0.9, y);              // tail
+    ctx.lineTo(x - s * 1.3, y - s * 0.5);
+    ctx.lineTo(x - s * 1.1, y);
+    ctx.closePath();
+    ctx.fill();
   };
 
   World.prototype.drawGraph = function (night, drift) {
