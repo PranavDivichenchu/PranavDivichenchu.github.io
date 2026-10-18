@@ -14,11 +14,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Geist:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=21" />
+  <link rel="stylesheet" href="styles.css?v=24" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <canvas id="world" aria-hidden="true"></canvas>
+  <div class="cursor" aria-hidden="true"><span class="cursor__ring"></span><span class="cursor__dot"></span></div>
+  <div class="rail" aria-hidden="true"><span class="rail__fill"></span></div>
   <a class="skip" href="#work">Skip to experience</a>
 
   <!-- ============ NAV ============ -->
@@ -122,6 +124,7 @@
           <h2 id="work-h">Where I've worked</h2>
         </header>
         <ol class="jobs">
+          <li class="jobs__line" aria-hidden="true"><span></span></li>
           <li class="job">
             <div class="job__when">Aug 2026 – Now</div>
             <div>
@@ -194,9 +197,11 @@
         <header class="block__head">
           <p class="block__kicker">Projects</p>
           <h2 id="projects-h">Things I've built</h2>
+          <p class="gallery-hint">Keep scrolling to move through them →</p>
         </header>
         <div class="projects">
           <article class="project">
+            <div class="project__art" aria-hidden="true"><svg viewBox="0 0 240 120" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M60 110H180"/><path d="M96 110l5-26h38l5 26"/><path d="M92 84h56"/><path d="M120 84c0-14-2-26 0-44"/><path d="M120 62c-16 0-26-10-28-22 14 0 26 8 28 22z"/><path d="M120 50c14-2 24-14 26-26-16 0-25 11-26 26z"/><path d="M58 38v10M53 43h10"/><path d="M182 56v8M178 60h8"/><circle cx="170" cy="30" r="2"/><circle cx="74" cy="70" r="2"/></svg></div>
             <div class="project__top"><h3>Sprout</h3><span>2026</span></div>
             <p class="project__sub project__sub--award">Winner, Fetch.ai ASI:One Agent Challenge · MHacks 2026</p>
             <p>
@@ -211,6 +216,7 @@
             </div>
           </article>
           <article class="project">
+            <div class="project__art" aria-hidden="true"><svg viewBox="0 0 240 120" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M70 70c0-13 10-20 22-20h56c12 0 22 7 22 20l6 22c2 10-8 16-16 8l-10-10H90l-10 10c-8 8-18 2-16-8z"/><path d="M92 64v14M85 71h14"/><circle cx="146" cy="66" r="3"/><circle cx="155" cy="75" r="3"/><path d="M38 20l14 8-14 8z"/><path d="M198 38V18l16-4v20"/><circle cx="194" cy="38" r="4"/><circle cx="210" cy="34" r="4"/></svg></div>
             <div class="project__top"><h3>Nexus</h3><span>2026</span></div>
             <p class="project__sub project__sub--award">1st Place, Education Track · HackFax × PatriotHacks 2026</p>
             <p>
@@ -224,6 +230,7 @@
             </div>
           </article>
           <article class="project">
+            <div class="project__art" aria-hidden="true"><svg viewBox="0 0 240 120" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="74" y="24" width="52" height="84" rx="8" transform="rotate(-11 100 66)"/><rect x="114" y="20" width="52" height="84" rx="8" transform="rotate(9 140 62)"/><rect class="art-fill" x="94" y="14" width="52" height="92" rx="8"/><path d="M103 28h34M103 36h24M103 50h34M103 58h34M103 66h20"/><path d="M103 90h12M125 90h12"/><path d="M60 64l-10 6 10 6M180 64l10 6-10 6"/></svg></div>
             <div class="project__top"><h3>Khali</h3><span>2025 – 26</span></div>
             <p class="project__sub">Short-form news app · Co-founder</p>
             <p>
@@ -234,6 +241,7 @@
             <ul class="tags"><li>SwiftUI</li><li>Combine</li><li>Supabase</li><li>AVFoundation</li></ul>
           </article>
           <article class="project">
+            <div class="project__art" aria-hidden="true"><svg viewBox="0 0 240 120" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M40 60L90 30M40 60L90 92M90 30L150 40M90 92L150 86M90 30L90 92M150 40L200 62M150 86L200 62M150 40L150 86"/><circle class="art-fill" cx="40" cy="60" r="7"/><circle class="art-fill" cx="90" cy="30" r="7"/><circle class="art-fill" cx="90" cy="92" r="7"/><circle class="art-fill" cx="150" cy="40" r="7"/><circle class="art-fill" cx="150" cy="86" r="7"/><circle class="art-fill" cx="200" cy="62" r="9"/><rect class="art-fill" x="111" y="54" width="20" height="13" rx="2"/><path d="M111 55l10 7 10-7"/></svg></div>
             <div class="project__top"><h3>B2Alpha</h3><span>2026</span></div>
             <p class="project__sub">Infrastructure for AI agents</p>
             <p>
@@ -248,6 +256,7 @@
             </div>
           </article>
           <article class="project">
+            <div class="project__art" aria-hidden="true"><svg viewBox="0 0 240 120" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect class="art-fill" x="26" y="22" width="54" height="26" rx="6"/><rect class="art-fill" x="26" y="74" width="54" height="26" rx="6"/><rect class="art-fill" x="104" y="48" width="54" height="26" rx="6"/><rect class="art-fill" x="182" y="22" width="40" height="26" rx="6"/><rect class="art-fill" x="182" y="74" width="40" height="26" rx="6"/><path d="M80 35c14 0 10 26 24 26M80 87c14 0 10-26 24-26M158 61c14 0 10-26 24-26M158 61c14 0 10 26 24 26"/><path d="M36 35h22M36 87h28M114 61h26"/></svg></div>
             <div class="project__top"><h3>Vibez</h3><span>2026</span></div>
             <p class="project__sub">Visual IDE · HackGT 13</p>
             <p>
@@ -262,6 +271,7 @@
             </div>
           </article>
           <article class="project">
+            <div class="project__art" aria-hidden="true"><svg viewBox="0 0 240 120" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M40 82l22-22 22 22 22-22 22 22"/><circle class="art-fill" cx="40" cy="82" r="6"/><circle class="art-fill" cx="62" cy="60" r="6"/><circle class="art-fill" cx="84" cy="82" r="6"/><circle class="art-fill" cx="106" cy="60" r="6"/><circle class="art-fill" cx="128" cy="82" r="6"/><path d="M152 20c48-10 74 18 68 50-5 30-40 42-60 30 15-12 16-30 2-38-12-7-20-22-10-42z"/><path d="M136 74c8-4 14-6 22-2" stroke-dasharray="3 4"/><path d="M152 68l7 4-6 5"/></svg></div>
             <div class="project__top"><h3>AEGIS</h3><span>2026</span></div>
             <p class="project__sub">GANs for drug discovery</p>
             <p>
@@ -275,6 +285,7 @@
             </div>
           </article>
           <article class="project project--wide">
+            <div class="project__art" aria-hidden="true"><svg viewBox="0 0 240 120" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M60 92c-4-30 20-46 60-46s64 16 60 46z"/><path d="M56 92h128"/><path d="M90 60l10 14M112 56l10 14M134 56l10 14M156 60l8 12"/><path d="M100 36l6-16 10 10 4-14 4 14 10-10 6 16z"/><path d="M34 104c4-20 6-40 4-60"/><path d="M37 56l-7-6M37 66l-7-6M37 76l-7-6M38 56l7-6M38 66l7-6M38 76l7-6"/></svg></div>
             <div class="project__top"><h3>Bread to Dough</h3><span>2024</span></div>
             <p class="project__sub project__sub--award">1st Place Overall and Best 9–10th Grade · Phoenix Hacks 2024</p>
             <p>
@@ -349,7 +360,13 @@
 
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="world.js?v=21"></script>
-  <script src="main.js?v=21"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="world.js?v=24"></script>
+  <script src="main.js?v=24"></script>
+  <script src="motion.js?v=24"></script>
 </body>
 </html>

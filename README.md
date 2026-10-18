@@ -2,12 +2,13 @@
 
 Personal website for Pranav Divichenchu. Live at https://pranavdivichenchu.github.io
 
-Plain HTML, CSS, and JavaScript with no build step, hosted on GitHub Pages.
+Plain HTML, CSS, and JavaScript with no build step, hosted on GitHub Pages. GSAP (ScrollTrigger, SplitText, DrawSVG) and Lenis load from jsDelivr.
 
 - `index.html` has all the content: the scroll scenes at the top, then experience, projects, and contact
 - `styles.css` has the layout and type
 - `world.js` draws the background on a canvas: Blue Ridge ridgelines, mist, stars, the constellation graph, and the circular lens
 - `main.js` turns scroll position into scene progress (letters drifting in, the lens, day to night to dawn), plus the nav highlighting and the phone menu
+- `motion.js` runs Lenis smooth scrolling and the GSAP layer: heading reveals, the sideways project gallery on wide screens, illustrations drawing in, the cursor, the progress rail, and the hiding nav. The site still works if it fails to load
 - `jwks.json` is the public key set for the FHIR project's SMART backend auth, so leave it at the root
 
 ## Run locally

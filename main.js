@@ -149,6 +149,19 @@
       } else {
         T.lensR = 0;
       }
+
+      // Embers rise off the Karana icon while its scene is on screen.
+      var icon = document.querySelector('.app-icon');
+      var B2 = byName.build;
+      if (icon && B2 && B2.visible) {
+        var ir = icon.getBoundingClientRect();
+        T.emberX = ir.left + ir.width / 2;
+        T.emberY = ir.top + ir.height * 0.2;
+        T.emberW = ir.width;
+        T.ember = smooth(0.02, 0.16, B2.p) * (1 - smooth(0.86, 0.98, B2.p));
+      } else {
+        T.ember = 0;
+      }
     }
 
     root.classList.toggle('is-night', night > 0.5);
@@ -185,6 +198,11 @@
   if (cue) cue.classList.add('is-on');
 
   /* ---------- Navigation ---------- */
+  // motion.js starts Lenis for smooth scrolling; fall back to native scrolling without it.
+  function scrollToY(y) {
+    if (window.lenis && !reduce) window.lenis.scrollTo(y, { duration: 1.6 });
+    else window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  }
   // Scenes are long, so jump to the point where their text is on screen.
   function jumpTo(id) {
     var el = document.getElementById(id);
@@ -193,7 +211,7 @@
     var p = parseFloat(el.dataset.jump || '0');
     if (p) y += p * (el.offsetHeight - window.innerHeight);
     else y -= 72; // keep regular sections clear of the fixed nav
-    window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+    scrollToY(y);
   }
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]');
@@ -202,7 +220,7 @@
     if (!id) return;
     e.preventDefault();
     closeMenu();
-    if (id === 'top') window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    if (id === 'top') scrollToY(0);
     else jumpTo(id);
     history.replaceState(null, '', '#' + id);
   });

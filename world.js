@@ -36,7 +36,10 @@
   function World(canvas) {
     this.c = canvas;
     this.ctx = canvas.getContext('2d');
-    this.p = { cam: 0, fog: 0.95, night: 0, dawn: 0, graph: 0, lensX: 0, lensY: 0, lensR: 0, sun: 0.3, ring: 0, px: 0 };
+    this.p = { cam: 0, fog: 0.95, night: 0, dawn: 0, graph: 0, lensX: 0, lensY: 0, lensR: 0, sun: 0.3, ring: 0, px: 0, emberX: 0, emberY: 0, emberW: 0, ember: 0 };
+    this.embers = [];
+    this.shooting = null;
+    this.nextShoot = 3;
     this.target = Object.assign({}, this.p);
     this.t = 0;
     this.motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -86,15 +89,15 @@
       path.closePath();
 
       // Conifers on the nearer ridges, in clumps.
-      if (i >= N - 4) {
-        var near = (i - (N - 4)) / 3;
-        var size = (h / 900) * (7 + 38 * Math.pow(near, 1.5));
+      if (i >= N - 5) {
+        var near = Math.max(0, (i - (N - 4)) / 3);
+        var size = (h / 900) * (i === N - 5 ? 5 : 7 + 38 * Math.pow(near, 1.5));
         var tx = x0;
         while (tx < x1) {
           tx += (1.5 + rnd() * 6) * (0.5 + size / 16);
           var clump = Math.sin(tx * 0.006 + i * 2.1) + Math.sin(tx * 0.017 + i);
           if (clump > -0.6 && rnd() < 0.85) {
-            addTree(path, tx, yAt(tx) + size * 0.2, size * (0.55 + rnd() * 0.8));
+            addTree(path, tx, yAt(tx) + size * 0.2, size * (0.55 + rnd() * 0.8), rnd);
           }
         }
       }
@@ -113,6 +116,17 @@
         v: (mr() - 0.5) * 16,
         a: 0.35 + mr() * 0.45
       });
+    }
+
+    var br = mulberry32(5);
+    this.birds = [];
+    var vee = [[0, 0], [-1, -1], [-1, 1], [-2, -2], [-2, 2], [-3, -3], [-3.4, 2.6]];
+    vee.forEach(function (v) { self.birds.push({ dx: v[0], dy: v[1], ph: br() * 6.28, sz: 0.8 + br() * 0.4 }); });
+
+    var fr = mulberry32(13);
+    this.flies = [];
+    for (var f = 0; f < (w < 700 ? 22 : 40); f++) {
+      this.flies.push({ x: fr() * w, y: h * (0.55 + fr() * 0.42), ax: 20 + fr() * 40, ay: 10 + fr() * 24, sp: 0.15 + fr() * 0.35, ph: fr() * 6.28, bl: 0.6 + fr() * 1.6 });
     }
 
     var sr = mulberry32(7);
@@ -149,24 +163,29 @@
     });
   };
 
-  function addTree(path, x, y, hgt) {
-    var w = hgt * 0.36, tiers = 3, k, yy, ww, inner = [];
-    path.moveTo(x, y - hgt);
+  // A conifer with 4-5 uneven, slightly drooping tiers.
+  function addTree(path, x, y, hgt, rnd) {
+    var w = hgt * (0.3 + rnd() * 0.1), tiers = 4 + (rnd() < 0.4 ? 1 : 0), k, yy, ww, droop, pts = [];
     for (k = 1; k <= tiers; k++) {
-      yy = y - hgt + (hgt * 0.92 * k) / tiers;
-      ww = (w * (0.42 + 0.58 * k / tiers)) / 2;
-      path.lineTo(x + ww, yy);
-      if (k < tiers) { path.lineTo(x + ww * 0.42, yy); inner[k] = [ww * 0.42, yy]; }
+      yy = y - hgt + (hgt * 0.9 * k) / tiers;
+      ww = (w * (0.3 + 0.7 * k / tiers)) / 2 * (0.85 + rnd() * 0.3);
+      droop = hgt * 0.035;
+      pts.push({ y: yy, w: ww, d: droop, iw: ww * (0.38 + rnd() * 0.1), lean: (rnd() - 0.5) * ww * 0.15 });
     }
-    path.lineTo(x + w * 0.07, y - hgt * 0.08);
-    path.lineTo(x + w * 0.07, y + hgt * 0.1);
-    path.lineTo(x - w * 0.07, y + hgt * 0.1);
-    path.lineTo(x - w * 0.07, y - hgt * 0.08);
-    for (k = tiers; k >= 1; k--) {
-      yy = y - hgt + (hgt * 0.92 * k) / tiers;
-      ww = (w * (0.42 + 0.58 * k / tiers)) / 2;
-      path.lineTo(x - ww, yy);
-      if (k > 1) path.lineTo(x - inner[k - 1][0], inner[k - 1][1]);
+    path.moveTo(x, y - hgt);
+    for (k = 0; k < tiers; k++) {
+      var P = pts[k];
+      path.lineTo(x + P.w + P.lean, P.y + P.d);
+      if (k < tiers - 1) path.lineTo(x + P.iw, P.y - P.d * 0.4);
+    }
+    path.lineTo(x + w * 0.06, y - hgt * 0.06);
+    path.lineTo(x + w * 0.06, y + hgt * 0.1);
+    path.lineTo(x - w * 0.06, y + hgt * 0.1);
+    path.lineTo(x - w * 0.06, y - hgt * 0.06);
+    for (k = tiers - 1; k >= 0; k--) {
+      var Q = pts[k];
+      path.lineTo(x - Q.w + Q.lean, Q.y + Q.d);
+      if (k > 0) path.lineTo(x - pts[k - 1].iw, pts[k - 1].y - pts[k - 1].d * 0.4);
     }
     path.closePath();
   }
@@ -230,6 +249,8 @@
         if (s.r > 1.1) { ctx.beginPath(); ctx.arc(s.x, s.y + drift, s.r, 0, 6.283); ctx.fill(); }
         else ctx.fillRect(s.x, s.y + drift, s.r * 1.6, s.r * 1.6);
       }
+      this.drawMoon(night * (1 - P.dawn * 0.5), drift);
+      this.drawShootingStar(night * (1 - P.dawn));
       // The graph fades out at the end so it doesn't run through the contact text.
       if (P.graph > 0.001 && P.dawn < 0.98) this.drawGraph(night * (1 - P.dawn), drift);
     }
@@ -246,6 +267,8 @@
       ctx.translate(offX, offY);
       ctx.fillStyle = rgb(this.layerColor(i, night, fog, lens));
       ctx.fill(L.path);
+      // Birds cross between the far ridges in the daytime fog.
+      if (!lens && i === 1 && night < 0.6 && P.dawn < 0.1) this.drawBirds((1 - night / 0.6), camY);
       // The school sits on this ridge at dawn, at the very end of the page.
       if (!lens && i === 2 && P.dawn > 0.15) this.drawSchool(L, clamp((P.dawn - 0.15) / 0.6, 0, 1), this.layerColor(i, night, fog, false));
       ctx.restore();
@@ -264,6 +287,9 @@
         ctx.fillRect(mx - M.r, my - M.r, M.r * 2, M.r * 2);
       }
     }
+
+    if (!lens && night > 0.3) this.drawFireflies((night - 0.3) / 0.7 * (1 - P.dawn * 0.7));
+    if (!lens && P.ember > 0.01) this.drawEmbers(P.ember);
 
     // Overall fog wash, thickest at the very top of the page
     if (!lens && fog > 0.5) {
@@ -319,6 +345,8 @@
     ctx.lineTo(x + u * 0.2, tb - th - tRoof - u * 0.25);
     ctx.lineTo(x + u * 0.012, tb - th - tRoof - u * 0.18);
     ctx.fill();
+    // a cohort of kids walking up to the door
+    this.drawCohort(L, x - bw / 2, u, a, color);
     // lit windows, a door, and the bell
     var glow = 'rgba(255, 196, 120, ' + (0.9 * a) + ')';
     ctx.shadowColor = 'rgba(255, 180, 90, ' + (0.8 * a) + ')';
@@ -364,6 +392,134 @@
     ctx.lineTo(x - s * 1.1, y);
     ctx.closePath();
     ctx.fill();
+  };
+
+  World.prototype.drawCohort = function (L, doorX, u, a, color) {
+    var ctx = this.ctx, n = 6, t = this.t;
+    var gx = doorX - u * 1.8, gy0 = L.yAt(gx) - u * 0.3;
+    var pg = ctx.createRadialGradient(gx, gy0, 0, gx, gy0, u * 2.6);
+    pg.addColorStop(0, 'rgba(255, 180, 110, 0.22)');
+    pg.addColorStop(1, 'rgba(255, 180, 110, 0)');
+    ctx.fillStyle = pg;
+    ctx.fillRect(gx - u * 2.6, gy0 - u * 2.6, u * 5.2, u * 5.2);
+    ctx.fillStyle = rgb(color);
+    for (var i = 0; i < n; i++) {
+      var q = ((t * 0.035 + i / n) % 1);
+      var fx = doorX - u * 3.8 + q * u * 3.7;
+      var fade = Math.min(1, q * 6, (1 - q) * 8);
+      var hgt = u * (0.44 + (i % 3) * 0.05);
+      var gy = L.yAt(fx) + u * 0.04;
+      var step = Math.sin(t * 6 + i * 1.7);
+      ctx.globalAlpha = a * fade;
+      ctx.beginPath(); ctx.arc(fx, gy - hgt * 0.86, hgt * 0.13, 0, 6.283); ctx.fill();          // head
+      ctx.fillRect(fx - hgt * 0.1, gy - hgt * 0.72, hgt * 0.2, hgt * 0.38);                  // body
+      ctx.fillRect(fx - hgt * 0.2, gy - hgt * 0.7, hgt * 0.1, hgt * 0.26);                    // backpack
+      ctx.save();
+      ctx.translate(fx, gy - hgt * 0.36);
+      ctx.rotate(step * 0.4); ctx.fillRect(-hgt * 0.04, 0, hgt * 0.08, hgt * 0.36);
+      ctx.rotate(-step * 0.8); ctx.fillRect(-hgt * 0.04, 0, hgt * 0.08, hgt * 0.36);
+      ctx.restore();
+    }
+    ctx.globalAlpha = a;
+  };
+
+  World.prototype.drawBirds = function (a, camY) {
+    var ctx = this.ctx, w = this.w, h = this.h, t = this.t;
+    var period = 26, q = (t % period) / period;
+    var cx = -0.15 * w + q * 1.3 * w, cy = h * 0.22 + Math.sin(q * 6.28) * h * 0.015;
+    var gap = Math.max(10, w * 0.011);
+    ctx.strokeStyle = 'rgba(28, 36, 46, ' + (0.55 * a) + ')';
+    ctx.lineWidth = 1.4;
+    ctx.lineCap = 'round';
+    this.birds.forEach(function (b) {
+      var bx = cx + b.dx * gap * 1.4, by = cy + b.dy * gap * 0.7;
+      var s = gap * 0.55 * b.sz, flap = Math.sin(t * 7 + b.ph) * s * 0.55;
+      ctx.beginPath();
+      ctx.moveTo(bx - s, by - flap);
+      ctx.quadraticCurveTo(bx - s * 0.45, by - s * 0.15, bx, by + s * 0.12);
+      ctx.quadraticCurveTo(bx + s * 0.45, by - s * 0.15, bx + s, by - flap);
+      ctx.stroke();
+    });
+  };
+
+  World.prototype.drawMoon = function (a, drift) {
+    if (a < 0.01) return;
+    var ctx = this.ctx, w = this.w, h = this.h;
+    var mx = w * (w < 700 ? 0.78 : 0.84), my = h * 0.15 + drift, r = Math.max(14, Math.min(w, h) * 0.03);
+    var g = ctx.createRadialGradient(mx, my, 0, mx, my, r * 6);
+    g.addColorStop(0, 'rgba(230, 236, 255, ' + (0.16 * a) + ')');
+    g.addColorStop(1, 'rgba(230, 236, 255, 0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(mx - r * 6, my - r * 6, r * 12, r * 12);
+    ctx.save();
+    ctx.beginPath(); ctx.arc(mx, my, r, 0, 6.283); ctx.clip();
+    ctx.fillStyle = 'rgba(240, 238, 228, ' + a + ')';
+    ctx.fillRect(mx - r, my - r, r * 2, r * 2);
+    // the shadowed part of a waxing crescent
+    ctx.fillStyle = rgb(PAL.nightSkyTop, 0.94);
+    ctx.beginPath(); ctx.arc(mx - r * 0.42, my - r * 0.12, r * 0.96, 0, 6.283); ctx.fill();
+    ctx.restore();
+  };
+
+  World.prototype.drawShootingStar = function (a) {
+    if (!this.motion || a < 0.3) return;
+    var ctx = this.ctx, w = this.w, h = this.h;
+    if (!this.shooting && this.t > this.nextShoot) {
+      this.shooting = { x: w * (0.3 + Math.random() * 0.6), y: h * (0.05 + Math.random() * 0.2), born: this.t, len: w * (0.12 + Math.random() * 0.08) };
+      this.nextShoot = this.t + 4 + Math.random() * 6;
+    }
+    var S = this.shooting;
+    if (!S) return;
+    var age = (this.t - S.born) / 0.9;
+    if (age > 1) { this.shooting = null; return; }
+    var hx = S.x - age * S.len * 1.6, hy = S.y + age * S.len * 0.6;
+    var tx = hx + S.len * 0.5, ty = hy - S.len * 0.19;
+    var g = ctx.createLinearGradient(tx, ty, hx, hy);
+    var fade = Math.sin(age * Math.PI);
+    g.addColorStop(0, 'rgba(255, 255, 255, 0)');
+    g.addColorStop(1, 'rgba(255, 255, 255, ' + (0.9 * fade * a) + ')');
+    ctx.strokeStyle = g; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(hx, hy); ctx.stroke();
+  };
+
+  World.prototype.drawFireflies = function (a) {
+    var ctx = this.ctx, t = this.t;
+    for (var i = 0; i < this.flies.length; i++) {
+      var F = this.flies[i];
+      var x = F.x + Math.sin(t * F.sp + F.ph) * F.ax + Math.sin(t * F.sp * 2.3 + F.ph) * F.ax * 0.3;
+      var y = F.y + Math.cos(t * F.sp * 1.3 + F.ph) * F.ay;
+      var blink = Math.max(0, Math.sin(t * F.bl + F.ph * 3));
+      var al = a * blink;
+      if (al < 0.02) continue;
+      var g = ctx.createRadialGradient(x, y, 0, x, y, 9);
+      g.addColorStop(0, 'rgba(236, 228, 140, ' + (0.55 * al) + ')');
+      g.addColorStop(1, 'rgba(236, 228, 140, 0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(x - 9, y - 9, 18, 18);
+      ctx.fillStyle = 'rgba(255, 250, 200, ' + al + ')';
+      ctx.fillRect(x - 0.9, y - 0.9, 1.8, 1.8);
+    }
+  };
+
+  // Warm sparks rising off the Karana icon, like a diya flame.
+  World.prototype.drawEmbers = function (a) {
+    var ctx = this.ctx, P = this.p, list = this.embers;
+    if (this.motion && list.length < 46 && Math.random() < 0.6) {
+      list.push({ x: P.emberX + (Math.random() - 0.5) * P.emberW * 0.7, y: P.emberY - P.emberW * 0.2, vx: (Math.random() - 0.5) * 14, vy: -(26 + Math.random() * 40), life: 0, max: 1.6 + Math.random() * 1.8, r: 1 + Math.random() * 1.8 });
+    }
+    for (var i = list.length - 1; i >= 0; i--) {
+      var E = list[i];
+      if (E.life > E.max) { list.splice(i, 1); continue; }
+      var k = E.life / E.max, al = a * Math.sin(k * Math.PI);
+      var x = E.x + Math.sin(E.life * 3 + i) * 6, y = E.y;
+      var g = ctx.createRadialGradient(x, y, 0, x, y, E.r * 5);
+      g.addColorStop(0, 'rgba(255, 170, 80, ' + (0.6 * al) + ')');
+      g.addColorStop(1, 'rgba(255, 140, 60, 0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(x - E.r * 5, y - E.r * 5, E.r * 10, E.r * 10);
+      ctx.fillStyle = 'rgba(255, 226, 170, ' + al + ')';
+      ctx.beginPath(); ctx.arc(x, y, E.r * 0.7, 0, 6.283); ctx.fill();
+    }
   };
 
   World.prototype.drawGraph = function (night, drift) {
@@ -431,7 +587,7 @@
     if (this.motion) this.t += dt;
     var k = 1 - Math.exp(-dt * 7);
     for (var key in this.target) {
-      if (key === 'lensX' || key === 'lensY') this.p[key] = this.target[key];
+      if (key === 'lensX' || key === 'lensY' || key === 'emberX' || key === 'emberY' || key === 'emberW') this.p[key] = this.target[key];
       else this.p[key] += (this.target[key] - this.p[key]) * k;
     }
     if (this.motion) {
@@ -441,6 +597,10 @@
         if (M.x - M.r > this.w + 80) M.x = -M.r;
         if (M.x + M.r < -80) M.x = this.w + M.r;
       }
+    }
+    for (var e = 0; e < this.embers.length; e++) {
+      var E = this.embers[e];
+      E.life += dt; E.x += E.vx * dt; E.y += E.vy * dt;
     }
     this.draw();
   };
